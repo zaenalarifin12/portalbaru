@@ -1,0 +1,45 @@
+implementasi code
+
+- register
+- login 
+- informasi | for petani | read by terbaru      || clear
+- informasi (crud) | for admin                  || clear
+
+- pemesanan kebutuhan () | for petani           || clear 
+    - page produk yang akan dipesan             ||  
+    - page daftar produk yang akan dipesan dan jumlah quantity nya  ||
+    - checkout , total jumlah dan upload struk  ||
+    - selesai -> status pengiriman
+
+- pesanan saya                                  
+    - daftar order dan status pengiriman        
+
+- semua pesanan produk                          || clear
+    - daftar order dan status pengiriman 
+    - detail produk yang dibeli
+        -> tombol ubah status pengiriman
+
+- produk (crud) | for admin         || clear
+- great (crud)  | for admin         || clear
+
+- daftar penjualan (petani) | for petani and admin only read                ||clear
+    - page daftar penjualan -> mengisi bal dan metode pembayaran
+
+- hasil_penjualan | for petani and admin admin                              ||clear
+    - page hasil penjualan (tombol untuk mengubah status pembayaran)
+    - page proses verifikasi produk , yang laku dan tidak laku| for admin
+    - kalau dengan atm maka ada tombol status pembayaran 
+
+- admins                || clear
+    - page users crud   || 
+- pengaturan            
+    - page profile
+
+
+
+next task 
+- pengaturan        || clear
+- data petani       
+- user in model     || clear
+- validasi user tiap task || 
+- 
