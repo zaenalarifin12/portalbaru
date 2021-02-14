@@ -10,7 +10,7 @@ class DaftarPenjualanController extends Controller
 {
     public function index()
     {
-        $daftar_penjualan = DaftarPenjualan::get();
+        $daftar_penjualan = DaftarPenjualan::where("status", "belum")->get();
 
         return view("dashboard.daftar-penjualan.index", compact("daftar_penjualan"));
     }

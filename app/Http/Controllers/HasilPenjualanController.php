@@ -31,60 +31,75 @@ class HasilPenjualanController extends Controller
     public function store(Request $request, $id)
     {
 
-        $total = 0;
+        DB::beginTransaction();
 
-        for ($i=0; $i < count($request->id_great); $i++) {
+        try {
+         
+            $total = 0;
+
+                for ($i=0; $i < count($request->greate); $i++) {
+                    
+                    if(!empty($request->jumlah[$i])){
+
+                        $g = Greate::findOrFail($request->greate[$i]);
+
+                        $perTotal = $g->harga * $request->bobot[$i];
             
-            if(!empty($request->jumlah[$i])){
-
-                $g = Greate::findOrFail($request->id_great[$i]);
-
-                $perTotal = $g->harga * $request->jumlah[$i];
-    
-                $total += $perTotal;
-    
-            }
+                        $total += $perTotal;
             
-        }
+                    }
+                    
+                }
 
-        $daftar = DaftarPenjualan::findOrFail($id);
-        
-        $daftar->update([
-            "status"    => "sudah"
-        ]);
-
-        $hp = HasilPenjualan::create([
-            "daftar_penjualan_id"   => $id,
-            "total"                 => $total
-        ]);
-
-        for ($i=0; $i < count($request->id_great); $i++) { 
-
-            if(!empty($request->jumlah[$i])){
-
-                $g = Greate::findOrFail($request->id_great[$i]);
-
-                $perTotal = $g->harga * $request->jumlah[$i];
-
-                $total += $perTotal;
-
-                LakuDetail::create([
-                    "jumlah"                => $request->jumlah[$i],
-                    "total"                 => $perTotal,
-                    "great_id"              => $g->id,
-                    "hasil_penjualan_id"    => $hp->id
+                $daftar = DaftarPenjualan::findOrFail($id);
+                
+                $daftar->update([
+                    "status"    => "sudah"
                 ]);
-            
-            }
-        }
 
-        if($request->jumlah_reject != null && $request->alasan != null){
-            TidakLakuDetail::create([
-                "jumlah"                => $request->jumlah_reject,
-                "alasan"                => $request->alasan,
-                "hasil_penjualan_id"    => $hp->id
-            ]);
-        } 
+                $hp = HasilPenjualan::create([
+                    "daftar_penjualan_id"   => $id,
+                    "total"                 => $total
+                ]);
+
+                for ($i=0; $i < count($request->greate); $i++) { 
+
+                    if(!empty($request->jumlah[$i])){
+
+                        $g = Greate::findOrFail($request->greate[$i]);
+
+                        $perTotal = $g->harga * $request->bobot[$i];
+
+                        $total += $perTotal;
+
+                        LakuDetail::create([
+                            "bal"                   => $request->jumlah[$i],
+                            "jumlah"                => $request->bobot[$i],
+                            "total"                 => $perTotal,
+                            "great_id"              => $g->id,
+                            "hasil_penjualan_id"    => $hp->id
+                        ]);
+                    
+                    }
+                }
+
+                
+                if($request->jumlah_reject != null && $request->alasan != null){
+                    
+                    $x = TidakLakuDetail::create([
+                        "bal"                   => $request->jumlah_reject,
+                        "alasan"                => $request->alasan,
+                        "hasil_penjualan_id"    => $hp->id
+                    ]);
+                } 
+
+
+            DB::commit();
+            // all good
+        } catch (\Exception $e) {
+            DB::rollback();
+            // something went wrong
+        }
 
         return redirect("/daftar-penjualan")->with("msg", "penjualan berhasil diproses");
     }

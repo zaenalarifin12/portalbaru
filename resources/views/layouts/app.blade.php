@@ -133,6 +133,12 @@
               </a>
             </li> 
 
+            <li class="nav-item">
+              <a href="{{ url("/riwayat-penjualan") }}" class="nav-link">
+                  <p>Riwayat Penjualan</p>
+              </a>
+            </li> 
+
             {{-- @if (Auth::user()->role == 2) --}}
               <li class="nav-item">
                 <a href="{{ url("/informasi") }}" class="nav-link">
@@ -150,13 +156,14 @@
             {{-- @endif --}}
 
             {{-- @if (Auth::user()->role == 1) --}}
-              
+
               <li class="nav-item">
                 <a href="{{ url("/pengaturan") }}" class="nav-link">
                     <p>Pengaturan</p>
                 </a>
               </li>                 
             {{-- @endif --}}
+
 
         </ul>
       </nav>

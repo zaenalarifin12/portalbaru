@@ -8,7 +8,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Detail Hasil Penjualan</h1>
+            <h1>Detail Riwayat Penjualan</h1>
           </div>
           <div class="col-sm-6">
           </div>
@@ -51,6 +51,7 @@
         <h5>Tidak Laku</h5>
         <p>Alasan: {{ $tidakLaku->alasan }}</p>
         <p>Jumlah: {{ $tidakLaku->bal }} Bal</p>
+
 
     @endif       
         

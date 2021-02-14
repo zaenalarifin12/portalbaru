@@ -40,25 +40,26 @@ Route::group(["middleware" => ["auth"]], function(){
     Route::put('/daftar-penjualan/{id}',        "DaftarPenjualanController@update");
     Route::delete('/daftar-penjualan/{id}',     "DaftarPenjualanController@destroy");
 
-    Route::get('/hasil-penjualan/{id}',         "HasilPenjualanController@index");
-    Route::post('/hasil-penjualan/{id}',         "HasilPenjualanController@store");
+    Route::get('/hasil-penjualan/{id}',                 "HasilPenjualanController@index");
+    Route::post('/hasil-penjualan/{id}',                "HasilPenjualanController@store");
 
-    Route::get('/semua-penjualan',                  "SemuaPenjualanController@index");
-    Route::get('/semua-penjualan/{id}',             "SemuaPenjualanController@show");
-    // Route::put('/semua-pesanan/{id}',        "SemuaPesananController@update");
+    Route::get('/semua-penjualan',                      "SemuaPenjualanController@index");
+    Route::get('/semua-penjualan/{id}',                 "SemuaPenjualanController@show");
+    // Route::put('/semua-pesanan/{id}',                "SemuaPesananController@update");
+
+    Route::get('/riwayat-penjualan',                    "RiwayatPenjualanController@index");
+    Route::get('/riwayat-penjualan/{id}',                    "RiwayatPenjualanController@show");
 
     Route::resource('/informasi',                       "InformasiController" );
     Route::resource('/product',                         "ProductController" );
     Route::resource('/greate',                          "GreatController" );
     Route::resource('/user',                            "UserController" );
-    Route::resource('/data-petani',                            "DataPetaniController" );
+    Route::resource('/data-petani',                     "DataPetaniController" );
 
-    Route::get("/pengaturan",                      "PengaturanController@index");
-    Route::get("/pengaturan/edit",                 "PengaturanController@edit");
-    Route::put("/pengaturan",                      "PengaturanController@update");
+    Route::get("/pengaturan",                           "PengaturanController@index");
+    Route::get("/pengaturan/edit",                      "PengaturanController@edit");
+    Route::put("/pengaturan",                           "PengaturanController@update");
 });
-
-
 
 Auth::routes();
 

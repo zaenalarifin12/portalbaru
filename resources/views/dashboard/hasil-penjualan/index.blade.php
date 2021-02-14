@@ -29,72 +29,50 @@
 
             <form action="{{ url("/hasil-penjualan/$hasil->id") }}" method="post">
               
+              <div class="wrapper">
 
-              @for ($i = 1; $i < $hasil->jumlah_bal+1; $i++)
-                  <div class="row">
-                    <div class="col-sm">
-                      <div class="form-group">
-                        <label for="">Bal Ke - {{ $i }}</label> <br>
-                        
-                        
-                          <select name="" id="" class="form-control">
+                <div class="row">
+
+                  <div class="col">
+
+                    <div class="wrapper-greate">
+
+                      <div class="row">
+                        <div class="form-group mr-3">
+                          <label for="">Greate</label>
+                          <select class="form-control" name="greate[]" id="">
                             @foreach ($greate as $item)
-                              <option value="">
-                                {{ $item->nama}}
-                              </option>
-                              
+                              <option  value="{{ $item->id }}">{{ $item->nama }}</option>    
                             @endforeach
                           </select>
-                          <input type="number" class="form-control" name="jumlah[]" placeholder="11">
-                          {{-- <input type="text" disabled class="form-control" value=""> --}}
-
-                        {{-- <input type="hidden" name="id_great[]" class="form-control" value=""> --}}
-                        
+                        </div>
+                        <div class="form-group mr-3">
+                          <label for="">Jumlah bal</label>
+                          <input required name="jumlah[]" class="form-control" type="number" value="">
+                       </div>
+                       <div class="form-group">
+                          <label for="">Bobot</label>
+                          <input required name="bobot[]" class="form-control" type="number" value="">
                       </div>
+                      </div>
+  
                     </div>
+
+                    <div class="wrapper-reject">
+                    </div>
+
                   </div>
-              @endfor
-              
+                  
+                  <div class="form-group ml-5">
+                    <div id="tambah" class="btn btn-sm btn-success">Tambah</div>
+                  </div>
+                  <div class="form-group ml-5">
+                    <div id="reject" class="btn btn-sm btn-info">Reject</div>
+                  </div>
+                 
+                </div>
 
-                @foreach ($greate as $item)
-                
-                    <div class="row">
-                      <div class="col-sm">
-                        <div class="form-group">
-                            <label for="">Great</label>
-                            <input type="text" disabled class="form-control" value="{{ $item->nama }}">
-                            <input type="hidden" name="id_great[]" class="form-control" value="{{ $item->id }}">
-                        </div>  
-                      </div>
-                      <div class="col-sm">
-                        <div class="form-group">
-                            <label for="">Jumlah (kg)</label>
-                            <input type="number" class="form-control" name="jumlah[]" placeholder="11">
-                        </div>  
-                      </div>
-                      <div class="col-sm">
-                        {{-- <div class="form-group">
-                            <label for="">Harga / (per kg) </label>
-                            <input type="number" class="form-control" name="kg" value="">
-                        </div>   --}}
-                      </div>
-                    </div>
-                  
-                  
-                @endforeach
-                
-                <div class="row">
-                    <div class="form-group">
-                        <label>Jumlah yang direject | Optional</label>
-                        <input type="number" class="form-control" name="jumlah_reject" placeholder="11">
-                    </div>  
-                </div>
-                <div class="row">
-                    <div class="form-group">
-                        <label for="">Reject (Optional)</label><br>
-                        <textarea name="alasan" placeholder="" class="form-control" cols="30" rows="10"></textarea>
-                    </div>
-                </div>
+              </div>
                 
                 <br>
                 @csrf
@@ -111,4 +89,46 @@
     </section>
     <!-- /.content -->
 </div>
+@endsection
+
+@section('script')
+  <script>
+    $("#tambah").click(function(){
+      $(".wrapper-greate").append(`
+        <div class="row">
+          <div class="form-group mr-3">
+            <label for="">Greate</label>
+            <select class="form-control" name="greate[]" id="">
+              @foreach ($greate as $item)
+                <option  value="{{ $item->id }}">{{ $item->nama }}</option>    
+              @endforeach
+            </select>
+          </div>
+          <div class="form-group mr-3">
+            <label for="">Jumlah bal</label>
+            <input required name="jumlah[]" class="form-control" type="number" value="">
+          </div>
+          <div class="form-group">
+              <label for="">Bobot</label>
+              <input required name="bobot[]" class="form-control" type="number" value="">
+          </div>
+        </div>
+      `)
+    });
+
+    $("#reject").one("click", function(){
+      $(".wrapper-reject").append(`
+        <div class="row">
+          <div class="form-group">
+            <label> Jumlah bal </label>
+            <input required class="form-control" type="text" name="jumlah_reject" />
+          </div>
+          <div class="form-group ml-3">
+            <label> Alasan </label>
+            <textarea required name="alasan" class="form-control"></textarea>
+          </div>
+        </div>
+      `)
+    });
+  </script>
 @endsection
