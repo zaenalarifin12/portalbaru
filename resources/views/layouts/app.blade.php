@@ -62,7 +62,21 @@
           <img src="{{ asset("assets/img/user2-160x160.jpg")}}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">{{ Auth::user()->nama }}</a>
+          <a href="#" class="d-block">
+            {{ Auth::user()->nama }}
+            -
+            @if (Auth::user()->role == 1)
+              Petani
+            @elseif(Auth::user()->role == 2)
+              Admin PPL
+            @elseif(Auth::user()->role == 3)
+              Admin Penjualan
+            @elseif(Auth::user()->role == 4)
+              Admin Keuangan
+            @elseif(Auth::user()->role == 5)
+              Super Admin
+            @endif
+          </a>
         </div>
       </div>
 
@@ -80,90 +94,143 @@
                 </a>
             </li>
 
-            {{-- @if (Auth::user()->role != 1) --}}
+            @if (
+              Auth::user()->role != 1
+              )
               <li class="nav-item">
                 <a href="{{ url("/data-petani") }}" class="nav-link">
                     <p>Data Petani</p>
                 </a>
               </li>
-            {{-- @endif --}}
+            @endif
 
+            @if (
+              Auth::user()->role == 1 ||
+              Auth::user()->role == 5
+            )
             <li class="nav-item">
-                <a href="{{ url("/pemesanan-kebutuhan") }}" class="nav-link">
-                    <p>Kebutuhan Petani</p>
-                </a>
-            </li>
+              <a href="{{ url("/pemesanan-kebutuhan") }}" class="nav-link">
+                  <p>Kebutuhan Petani</p>
+              </a>
+            </li>    
+            
             <li class="nav-item">
               <a href="{{ url("/pesanan-saya") }}" class="nav-link">
                   <p>Pesanan Saya</p>
               </a>
-            </li> 
+            </li>     
+            @endif
+            
+            @if (
+              Auth::user()->role != 4
+            )
             <li class="nav-item">
               <a href="{{ url("/semua-pesanan") }}" class="nav-link">
                   <p>Semua Pesanan Saya</p>
               </a>
             </li> 
+            @endif
 
-            {{-- @if (Auth::user()->role == 3 || Auth::user()->role == 5) --}}
-              <li class="nav-item">
-                <a href="{{ url("/product") }}" class="nav-link">
-                    <p>Produk</p>
-                </a>
-              </li>                 
-            {{-- @endif --}}
+            @if (
+              Auth::user()->role == 5
+            )
+            <li class="nav-item">
+              <a href="{{ url("/product") }}" class="nav-link">
+                  <p>Produk</p>
+              </a>
+            </li>                 
 
-            {{-- @if (Auth::user()->role == 3 || Auth::user()->role == 5) --}}
-              <li class="nav-item">
-                <a href="{{ url("/greate") }}" class="nav-link">
-                    <p>great</p>
-                </a>
-              </li>                 
-            {{-- @endif --}}
+            <li class="nav-item">
+              <a href="{{ url("/greate") }}" class="nav-link">
+                  <p>great</p>
+              </a>
+            </li>                 
+            @endif
 
-            
+            @if (
+              Auth::user()->role == 1 || 
+              Auth::user()->role == 2 || 
+              Auth::user()->role == 5
+            )
             <li class="nav-item">
               <a href="{{ url("/daftar-penjualan") }}" class="nav-link">
                   <p>Daftar Penjualan </p>
               </a>
             </li> 
+            @endif
+
+            @if (
+              Auth::user()->role == 1 || 
+              Auth::user()->role == 2 || 
+              Auth::user()->role == 3 ||
+              Auth::user()->role == 5
+            )
 
             <li class="nav-item">
               <a href="{{ url("/semua-penjualan") }}" class="nav-link">
                   <p>Hasil Penjualan</p>
               </a>
             </li> 
+            @endif 
 
+            @if ( 
+              Auth::user()->role == 1 || 
+              Auth::user()->role == 3 ||
+              Auth::user()->role == 5
+            )
             <li class="nav-item">
               <a href="{{ url("/riwayat-penjualan") }}" class="nav-link">
                   <p>Riwayat Penjualan</p>
               </a>
+            </li>     
+            @endif
+            
+            @if (
+              Auth::user()->role == 2 ||
+              Auth::user()->role == 5
+            )
+            <li class="nav-item">
+              <a href="{{ url("/informasi") }}" class="nav-link">
+                  <p>Informasi</p>
+              </a>
+            </li>                   
+            @endif
+
+            @if (
+             Auth::user()->role == 5
+            )
+            <li class="nav-item">
+              <a href="{{ url("/user") }}" class="nav-link">
+                  <p>Admin</p>
+              </a>
             </li> 
+            @endif
 
-            {{-- @if (Auth::user()->role == 2) --}}
-              <li class="nav-item">
-                <a href="{{ url("/informasi") }}" class="nav-link">
-                    <p>Informasi</p>
-                </a>
-              </li>                 
-            {{-- @endif --}}
+            @if (
+              Auth::user()->role == 4 ||
+              Auth::user()->role == 5
+            )
 
-            {{-- @if (Auth::user()->role == 5) --}}
-              <li class="nav-item">
-                <a href="{{ url("/user") }}" class="nav-link">
-                    <p>Admin</p>
-                </a>
-              </li> 
-            {{-- @endif --}}
+            <li class="nav-item">
+              <a href="{{ url("/laporan") }}" class="nav-link">
+                  <p>Laporan</p>
+              </a>
+            </li>
+            @endif
 
-            {{-- @if (Auth::user()->role == 1) --}}
+            <li class="nav-item">
+              <a href="{{ url("/pengaturan") }}" class="nav-link">
+                  <p>Pengaturan</p>
+              </a>
+            </li>
+            
 
-              <li class="nav-item">
-                <a href="{{ url("/pengaturan") }}" class="nav-link">
-                    <p>Pengaturan</p>
-                </a>
-              </li>                 
-            {{-- @endif --}}
-
+            <li class="nav-item mt-4">
+              <form action="{{ url("/logout") }}" method="post">
+              <button type="submit" class="btn btn-sm btn-danger ml-3">Logout</button>
+              @csrf
+              </form>
+            </li>
 
         </ul>
       </nav>

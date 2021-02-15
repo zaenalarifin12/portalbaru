@@ -1,0 +1,37 @@
+
+<p>Home</p>                     1 2 3 4 5 
+
+<p>Informasi terbaru</p>        1 2 3 4 5 
+
+<p>Data Petani</p>              2 3 4 5
+
+<p>Kebutuhan Petani</p>         1 5
+
+<p>Pesanan Saya</p>             1 5
+
+<p>Semua Pesanan Saya</p>       1 2 3 5
+
+<p>Produk</p>                   5
+
+<p>great</p>                    5
+
+<p>Daftar Penjualan </p>        1 2 5
+
+<p>Hasil Penjualan</p>          1 2 3 5
+
+<p>Riwayat Penjualan</p>        1 3 5
+
+<p>Informasi</p>                5
+
+<p>Admin</p>                    5
+
+<p>Laporan</p>                  4 5
+
+<p>Pengaturan</p>               1 2 3 4 5
+           
+
+petani 1
+ppl 2
+penjulana 3
+keuangan 4
+super 5

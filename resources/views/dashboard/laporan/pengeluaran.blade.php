@@ -13,7 +13,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Riwayat Penjualan</h1>
+            <h1>Laporan Pengeluaran</h1>
           </div>
         </div>
       </div>
@@ -25,7 +25,7 @@
         <div class="row">
 
           <div class="col-12 float-right">
-            <a href="{{ url("riwayat-penjualan/cetak") }}" class="btn btn-success btn-sm float-right mb-2">Cetak</a>
+            <a href="{{ url("laporan/pengeluaran/cetak") }}" class="btn btn-success btn-sm float-right mb-2">Cetak</a>
           </div>
 
           <div class="col-12">
@@ -35,29 +35,25 @@
                   <thead>
                   <tr>
                     <th>Nomor</th>
-                    <th>jumlah bal</th>
-                    <th>Pembayaran</th>
                     <th>Total</th>
-                    <th>Aksi</th>
+                    <th>Nama</th>
+                    <th>Tanggal</th>
                   </tr>
                   </thead>
                   <tbody>
-                    @foreach ($hasil as $item)
+                    @foreach ($order_product as $item)
                     <tr>
                         <td>{{ $loop->iteration }}</td>
-                        <td>{{ $item->jumlah_bal }}</td>
-                        <td>{{ $item->pembayaran }}</td>
                         <td>Rp. {{ $item->total }}</td>
-                        <td>
-                            <a href="{{ url("/riwayat-penjualan/$item->id") }}" class="btn btn-sm btn-info">Detail</a>
-                        </td>
+                        <td>{{ $item->nama }}</td>
+                        <td>{{ date ('d-M-Y', strtotime($item->created_at)) }}</td>
                     </tr>
                     @endforeach
                   </tbody>
                   <tfoot>
                     <tr>
-                        <th colspan="3" style="text-align:right">Total : Semuanya</th>
-                        <th colspan="2">{{ $totalSemua }}</th>
+                        <th colspan="1" style="text-align:right">Total : Semuanya</th>
+                        <th colspan="3">{{ $total }}</th>
                     </tr>
                 </tfoot>
                 

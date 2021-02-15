@@ -12,8 +12,11 @@ class SemuaPesananController extends Controller
 {
     public function index()
     {
-        $orderProduct = OrderProduct::where("user_id", Auth::user()->id)->orderBy("created_at", "DESC")->get();
-
+        if(Auth::user()->role == 1){
+            $orderProduct = OrderProduct::where("user_id", Auth::user()->id)->orderBy("created_at", "DESC")->get();
+        }else{
+            $orderProduct = OrderProduct::orderBy("created_at", "DESC")->get();
+        }
         return view("dashboard.semua-pesanan.index", compact("orderProduct"));
     }
 

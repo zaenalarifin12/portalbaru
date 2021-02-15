@@ -24,21 +24,21 @@ Route::group(["middleware" => ["auth"]], function(){
     Route::get('/pesanan-saya',                         "PesananSayaController@index");
     Route::get('/pesanan-saya/{id}',                    "PesananSayaController@edit");
     Route::put('/pesanan-struck/{id}',                  "PesananSayaController@update");
-    Route::get('/pesanan-saya-sukses/{id}',                  "PesananSayaController@sukses");
+    Route::get('/pesanan-saya-sukses/{id}',             "PesananSayaController@sukses");
 
     Route::post('/checkout',                            "PesananSayaController@checkout");
 
     Route::get('/semua-pesanan',                        "SemuaPesananController@index");
-    Route::get('/semua-pesanan/{id}',                        "SemuaPesananController@show");
-    Route::put('/semua-pesanan/{id}',                        "SemuaPesananController@update");
+    Route::get('/semua-pesanan/{id}',                   "SemuaPesananController@show");
+    Route::put('/semua-pesanan/{id}',                   "SemuaPesananController@update");
     
 
-    Route::get('/daftar-penjualan',             "DaftarPenjualanController@index");
-    Route::get('/daftar-penjualan/create',      "DaftarPenjualanController@create");
-    Route::post('/daftar-penjualan',            "DaftarPenjualanController@store");
-    Route::get('/daftar-penjualan/{id}/edit',   "DaftarPenjualanController@edit");
-    Route::put('/daftar-penjualan/{id}',        "DaftarPenjualanController@update");
-    Route::delete('/daftar-penjualan/{id}',     "DaftarPenjualanController@destroy");
+    Route::get('/daftar-penjualan',                     "DaftarPenjualanController@index");
+    Route::get('/daftar-penjualan/create',              "DaftarPenjualanController@create");
+    Route::post('/daftar-penjualan',                    "DaftarPenjualanController@store");
+    Route::get('/daftar-penjualan/{id}/edit',           "DaftarPenjualanController@edit");
+    Route::put('/daftar-penjualan/{id}',                "DaftarPenjualanController@update");
+    Route::delete('/daftar-penjualan/{id}',             "DaftarPenjualanController@destroy");
 
     Route::get('/hasil-penjualan/{id}',                 "HasilPenjualanController@index");
     Route::post('/hasil-penjualan/{id}',                "HasilPenjualanController@store");
@@ -48,13 +48,21 @@ Route::group(["middleware" => ["auth"]], function(){
     // Route::put('/semua-pesanan/{id}',                "SemuaPesananController@update");
 
     Route::get('/riwayat-penjualan',                    "RiwayatPenjualanController@index");
-    Route::get('/riwayat-penjualan/{id}',                    "RiwayatPenjualanController@show");
+    Route::get('/riwayat-penjualan/cetak',              "RiwayatPenjualanController@cetak");
+    Route::get('/riwayat-penjualan/{id}',               "RiwayatPenjualanController@show");
 
     Route::resource('/informasi',                       "InformasiController" );
     Route::resource('/product',                         "ProductController" );
     Route::resource('/greate',                          "GreatController" );
     Route::resource('/user',                            "UserController" );
-    Route::resource('/data-petani',                     "DataPetaniController" );
+    Route::get('/data-petani',                          "DataPetaniController@index" );
+    Route::get('/data-petani/cetak',                    "DataPetaniController@cetak" );
+
+    Route::get("/laporan",                              "LaporanController@index");
+    Route::get("/laporan/pemasukan",                    "LaporanController@pemasukan");
+    Route::get("/laporan/pemasukan/cetak",              "LaporanController@cetak_pemasukan");
+    Route::get("/laporan/pengeluaran",                  "LaporanController@pengeluaran");
+    Route::get("/laporan/pengeluaran/cetak",            "LaporanController@cetak_pengeluaran");
 
     Route::get("/pengaturan",                           "PengaturanController@index");
     Route::get("/pengaturan/edit",                      "PengaturanController@edit");

@@ -25,9 +25,19 @@
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
+        
         <div class="row">
-          <div class="col-12">
+          
+          @if (
+            Auth::user()->role == 4 ||
+            Auth::user()->role == 5
+          )
+          <div class="col-12 float-right">
+            <a href="{{ url("data-petani/cetak") }}" class="btn btn-success btn-sm float-right mb-2">Cetak</a>
+          </div>              
+          @endif
 
+          <div class="col-12">
             <div class="card">
               <div class="card-body">
                 <table id="example1" class="table table-bordered table-striped">
