@@ -26,12 +26,13 @@
             <form action="{{ url("/user/$user->id") }}" method="post">
                 
                 <div class="form-group">
-                    <label for="">NIK</label>
-                    <input type="text" value="{{ $user->nik }}" required class="form-control" name="nik" placeholder="NIK">
-                </div>
-                <div class="form-group">
                     <label for="">Nama</label>
                     <input type="text" value="{{ $user->nama }}" required class="form-control" name="nama" placeholder="Nama">
+                </div>
+                
+                <div class="form-group">
+                  <label for="">NO hp</label>
+                  <input type="number" value="{{ $user->no_hp }}" required class="form-control" name="no_hp" placeholder="NIK">
                 </div>
                 <div class="form-group">
                     <label for="">Password (jika ingin mengganti)</label>

@@ -28,7 +28,8 @@
                     <tr>
                         <th style="width: 10px">Nomor</th>
                         <th>Nama</th>
-                        <th>Jumlah</th>
+                        <th>Jumlah (bal)</th>
+                        <th>Jumlah (kg)</th>
                         <th>Total</th>
                     </tr>
                 </thead>
@@ -37,7 +38,8 @@
                         <tr>
                             <td>{{ $loop->iteration }}</td>
                             <td> {{ $item->nama }} </td>
-                            <td> {{ $item->jumlah }} </td>
+                            <td> {{ $item->bal }} bal </td>
+                            <td> {{ $item->jumlah }} kg </td>
                             <td> Rp. {{ $item->total }} </td>
                         </tr>   
                     @endforeach

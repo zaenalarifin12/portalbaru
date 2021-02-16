@@ -26,13 +26,13 @@
             <form action="{{ url("/user") }}" method="post">
                 
                 <div class="form-group">
-                    <label for="">NIK</label>
-                    <input type="text" value="" class="form-control" name="nik" placeholder="NIK">
-                </div>
-                <div class="form-group">
                     <label for="">Nama</label>
                     <input type="text" value="" class="form-control" name="nama" placeholder="Nama">
                 </div>
+                <div class="form-group">
+                  <label for="">no hp</label>
+                  <input type="number" value="" class="form-control" name="no_hp" placeholder="Nomor hp">
+              </div>
                 <div class="form-group">
                     <label for="">Password</label>
                     <input type="password" value="" class="form-control" name="password" placeholder="password">
@@ -40,9 +40,9 @@
                 <div class="form-group">
                     <label for="">Jabatan</label>
                     <select name="role" id="" class="form-control">
-                        <option value="2">A</option>
-                        <option value="3">B</option>
-                        <option value="4">C</option>
+                        <option value="2">Admin PPL</option>
+                        <option value="3">Admin Penjualan</option>
+                        <option value="4">Admin Keuangan</option>
                     </select>
                     
                 </div>

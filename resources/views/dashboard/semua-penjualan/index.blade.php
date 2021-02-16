@@ -44,6 +44,7 @@
                     <th>jumlah bal</th>
                     <th>Pembayaran</th>
                     <th>Total</th>
+                    <th>Tanggal</th>
                     <th>Aksi</th>
                   </tr>
                   </thead>
@@ -54,6 +55,7 @@
                         <td>{{ $item->jumlah_bal }}</td>
                         <td>{{ $item->pembayaran }}</td>
                         <td>Rp. {{ $item->total }}</td>
+                        <td>{{ date ('d-M-Y', strtotime($item->created_at)) }}</td>
                         <td>
                             <a href="{{ url("/semua-penjualan/$item->id") }}" class="btn btn-sm btn-info">Detail</a>
                         </td>
@@ -66,6 +68,7 @@
                     <th>jumlah bal</th>
                     <th>Pembayaran</th>
                     <th>Total</th>
+                    <th>Tanggal</th>
                     <th>Aksi</th>
                   </tr>
                   </tfoot>

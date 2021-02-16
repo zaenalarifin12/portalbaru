@@ -7,7 +7,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Jual Tembakau</h1>
+            <h1>Daftar Penjualan Tembakau</h1>
           </div>
           <div class="col-sm-6">
           </div>
@@ -49,7 +49,7 @@
                 @csrf
                 @method('put')
                 <div class="form-group">
-                    <button type="submit" class="btn btn-primary">Jual</button>
+                    <button type="submit" class="btn btn-primary">Daftar</button>
                 </div>
             </form>
             

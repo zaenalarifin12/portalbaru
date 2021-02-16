@@ -1,10 +1,7 @@
-task hari ini
 
-buat proses penjualan jadi bbrp form supaya lebih singkat
 
-riwayat penjualan dan juga total semua penjualannya
+- laporan pemasukan dan pengeluaran
 
-export ke excel
+- hasil penjualan di bagian tranfer
 
-validasi ui di user
 

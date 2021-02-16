@@ -50,7 +50,7 @@
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
+    <a href="{{ url("/") }}" class="brand-link">
       <span class="brand-text font-weight-light">Portal</span>
     </a>
 
@@ -122,16 +122,19 @@
             @endif
             
             @if (
-              Auth::user()->role != 4
+              Auth::user()->role == 1 ||
+              Auth::user()->role == 3 ||
+              Auth::user()->role == 5 
             )
             <li class="nav-item">
               <a href="{{ url("/semua-pesanan") }}" class="nav-link">
-                  <p>Semua Pesanan Saya</p>
+                  <p>Semua Pesanan</p>
               </a>
             </li> 
             @endif
 
             @if (
+              Auth::user()->role == 2 ||
               Auth::user()->role == 5
             )
             <li class="nav-item">
@@ -139,7 +142,12 @@
                   <p>Produk</p>
               </a>
             </li>                 
+            @endif
 
+            @if (
+              Auth::user()->role == 3 ||
+              Auth::user()->role == 5
+            )
             <li class="nav-item">
               <a href="{{ url("/greate") }}" class="nav-link">
                   <p>great</p>
@@ -150,6 +158,7 @@
             @if (
               Auth::user()->role == 1 || 
               Auth::user()->role == 2 || 
+              Auth::user()->role == 3 || 
               Auth::user()->role == 5
             )
             <li class="nav-item">

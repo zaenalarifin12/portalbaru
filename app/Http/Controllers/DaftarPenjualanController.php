@@ -4,13 +4,23 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\DaftarPenjualan;
+use Illuminate\Support\Facades\DB;
 use Auth;
 
 class DaftarPenjualanController extends Controller
 {
     public function index()
     {
-        $daftar_penjualan = DaftarPenjualan::where("status", "belum")->get();
+        $daftar_penjualan = DB::table("daftar_penjualan")->where("status", "belum")
+                ->join("user", "daftar_penjualan.user_id", "=", "user.id")
+                ->select(
+                    "daftar_penjualan.*",
+                    "user.nama",
+                    "user.nik",
+                    "user.alamat",
+                    "user.nama_ketua_kelompok"
+                )
+                ->get();
 
         return view("dashboard.daftar-penjualan.index", compact("daftar_penjualan"));
     }

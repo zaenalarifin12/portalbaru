@@ -18,6 +18,7 @@
     <section class="content">
       <div class="container-fluid">
 
+        <h5>total pesanan saya : Rp. {{ $orderProduct->total }} </h5>
         <form action="{{ url("/pesanan-struck/$orderProduct->id") }}" method="post" enctype="multipart/form-data">
 
             <div class="row">

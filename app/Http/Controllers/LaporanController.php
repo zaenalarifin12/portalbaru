@@ -47,7 +47,7 @@ class LaporanController extends Controller
         $pdf = PDF::loadView('dashboard.laporan.cetak-pemasukan', compact("hasil_penjualan", "total"))
         ->setOptions(['defaultFont' => 'sans-serif']);
 
-        return $pdf->stream('laporan-pemasukan.pdf');        
+        return $pdf->stream('laporan-pemasukan.pdf');
     }
 
 

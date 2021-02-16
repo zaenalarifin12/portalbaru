@@ -11,7 +11,9 @@ class UserController extends Controller
     public function index()
     {
         // user yang ga admin
-        $users = User::where("role", "!=", 1)->get();
+        $users = User::where("role", "!=", 1)
+                        ->where("role", "!=", 5)
+                        ->get();
 
         return view("dashboard.user.index", compact("users"));
     }
@@ -25,7 +27,7 @@ class UserController extends Controller
     {
         User::create([
             "nama"         => $request->nama ,
-            "nik"          => $request->nik,
+            "no_hp"        => $request->no_hp,
             "password"     => Hash::make($request->password),
             "role"         => $request->role
         ]);
@@ -47,13 +49,13 @@ class UserController extends Controller
         if($request->password == null){
             $user->update([
                 "nama"         => $request->nama ,
-                "nik"          => $request->nik
+                "no_hp"        => $request->no_hp,
             ]);
         }else{
             $user->update([
                 "nama"         => $request->nama ,
-                "nik"          => $request->nik,
-                "password"     => Hash::make($request->password)
+                "no_hp"        => $request->no_hp,
+                "password"     => Hash::make($request->password),
             ]);    
         }
 

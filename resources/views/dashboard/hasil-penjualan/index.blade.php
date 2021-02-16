@@ -51,7 +51,7 @@
                           <input required name="jumlah[]" class="form-control" type="number" value="">
                        </div>
                        <div class="form-group">
-                          <label for="">Bobot</label>
+                          <label for="">Bobot (Kg)</label>
                           <input required name="bobot[]" class="form-control" type="number" value="">
                       </div>
                       </div>
@@ -77,7 +77,7 @@
                 <br>
                 @csrf
                 <div class="form-group">
-                    <button type="submit" class="btn btn-primary">Jual</button>
+                    <button type="submit" class="btn btn-primary">Proses</button>
                 </div>
             </form>
             

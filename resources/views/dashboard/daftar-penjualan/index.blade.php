@@ -15,9 +15,14 @@
           <div class="col-sm-6">
             <h1>Daftar Penjualan Tembakau</h1>
           </div>
+
+          @if (Auth::user()->role == 1)
+
           <div class="col-sm-5 ">
             <a href="{{ url("/daftar-penjualan/create") }}" class="btn btn-primary btn-sm float-right">Daftar</a>
-          </div>
+          </div>              
+          @endif
+
         </div>
       </div>
     </section>
@@ -36,7 +41,17 @@
                     <th>Nomor</th>
                     <th>Jumlah bal</th>
                     <th>Pembayaran</th>
-                    <th>Aksi</th>
+                    <th>Nama</th>
+                    <th>NIK</th>
+                    <th>Alamat</th>
+                    <th>Nama Ketua Kelompok</th>
+                    
+                    @if (
+                      Auth::user()->role != 2
+                    )
+                    <th>Aksi</th>    
+                    @endif
+                    
                   </tr>
                   </thead>
                   <tbody>
@@ -45,16 +60,31 @@
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $item->jumlah_bal }}</td>
                         <td>{{ $item->pembayaran }}</td>
+                        <td> {{ $item->nama }} </td>
+                        <td> {{ $item->nik }} </td>
+                        <td> {{ $item->alamat }} </td>
+                        <td> {{ $item->nama_ketua_kelompok }} </td>
+                        @if (
+                          Auth::user()->role != 2
+                        )
                         <td>
+                          @if (
+                            Auth::user()->role == 3 ||
+                            Auth::user()->role == 5
+                            )
                             <a href="{{ url("/hasil-penjualan/$item->id") }}" class="btn btn-sm btn-primary">Proses</a>
-                            <a href="{{ url("/daftar-penjualan/$item->id/edit") }}" class="btn btn-sm btn-info">Edit</a>
-                            <form action="{{ url("/daftar-penjualan/$item->id") }}" method="post" style="display: inline">
-                                <button type="submit" class="btn btn-sm btn-danger">Hapus</button>
-                            @csrf
-                            @method("DELETE")
-                            </form>
-                            
-                        </td>
+                          @endif
+                          
+                          <a href="{{ url("/daftar-penjualan/$item->id/edit") }}" class="btn btn-sm btn-info">Edit</a>
+                          <form action="{{ url("/daftar-penjualan/$item->id") }}" method="post" style="display: inline">
+                              <button type="submit" class="btn btn-sm btn-danger">Hapus</button>
+                          @csrf
+                          @method("DELETE")
+                          </form>
+                          
+                      </td>
+                        @endif
+                        
                     </tr>
                     @endforeach
                   </tbody>
@@ -63,7 +93,15 @@
                     <th>Nomor</th>
                     <th>Jumlah bal</th>
                     <th>Pembayaran</th>
-                    <th>Aksi</th>
+                    <th>Nama</th>
+                    <th>NIK</th>
+                    <th>Alamat</th>
+                    <th>Nama Ketua Kelompok</th>
+                    @if (
+                      Auth::user()->role != 2
+                    )
+                    <th>Aksi</th>    
+                    @endif
                   </tr>
                   </tfoot>
                 </table>

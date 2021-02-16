@@ -33,6 +33,9 @@
                     <th>OrderID</th>
                     <th>Total</th>
                     <th>Status</th>
+                    <th>Tanggal</th>
+                    <th>Nama</th>
+                    <th>Jenis Pembayaran</th>
                     <th>Aksi</th>
                   </tr>
                   </thead>
@@ -40,8 +43,11 @@
                     @foreach ($orderProduct as $item)
                     <tr>
                         <td>{{ $item->id }}</td>
-                        <td>{{ $item->total }}</td>
+                        <td>Rp. {{ $item->total }}</td>
                         <td>{{ $item->status }}</td>
+                        <td>{{ date ('d-M-Y', strtotime($item->created_at)) }}</td>
+                        <td>{{ $item->nama }}</td>
+                        <td>{{ $item->pembayaran }}</td>
                         <td>
                             <a href="{{ url("/semua-pesanan/$item->id") }}" class="btn btn-sm btn-primary">Detail</a>
                             {{-- <a href="{{ url("/user/$item->id/") }}" class="btn btn-sm btn-info">Edit</a> --}}
@@ -55,6 +61,9 @@
                     <th>OrderID</th>
                     <th>Total</th>
                     <th>Status</th>
+                    <th>Tanggal</th>
+                    <th>Nama</th>
+                    <th>Jenis Pembayaran</th>
                     <th>Aksi</th>
                   </tr>
                   </tfoot>

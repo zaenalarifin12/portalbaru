@@ -32,7 +32,7 @@
           <th>rt</th>
           <th>rw</th>
           <th>kecamatan</th>
-          <th>kabupaten</th>
+          <th>nama ketua kelompok</th>
         </tr>
         </thead>
         <tbody>
@@ -46,7 +46,7 @@
               <td>{{ $item->rt }}</td>
               <td>{{ $item->rw }}</td>
               <td>{{ $item->kecamatan }}</td>
-              <td>{{ $item->kabupaten }}</td>
+              <td>{{ $item->nama_ketua_kelompok }}</td>
           </tr>
           @endforeach
         </tbody>

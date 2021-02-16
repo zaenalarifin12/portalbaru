@@ -29,6 +29,8 @@
         <div class="row">
           
           @if (
+            Auth::user()->role == 2 ||
+            Auth::user()->role == 3 ||
             Auth::user()->role == 4 ||
             Auth::user()->role == 5
           )

@@ -17,6 +17,7 @@ class SemuaPenjualanController extends Controller
                         "daftar_penjualan.pembayaran AS pembayaran",
                         "daftar_penjualan.jumlah_bal AS jumlah_bal"
                         )
+                    ->latest()
                     ->get();
 
 

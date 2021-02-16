@@ -61,6 +61,12 @@
             <p class="text-success">Status : {{ $order->status }}</p>
         @endif
         <p>Total : {{$order->total}}</p>
+
+        @if (!empty($order->struk))
+          <img class="mb-4" width="500px" src="{{ asset("/storage/$order->struk") }}" alt="" srcset="">    
+        @endif
+        
+
         @if ($order->status == "belum")
             <form action="{{ url("/semua-pesanan/$order->id") }}" method="post">
                 @method("PUT")

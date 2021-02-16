@@ -34,8 +34,8 @@
                   <thead>
                   <tr>
                     <th>Nomor</th>
-                    <th>NIK</th>
                     <th>Nama</th>
+                    <th>no hp</th>
                     <th>Jabatan</th>
                     <th>Aksi</th>
                   </tr>
@@ -44,9 +44,21 @@
                     @foreach ($users as $item)
                     <tr>
                         <td>{{ $loop->iteration }}</td>
-                        <td>{{ $item->nik }}</td>
                         <td>{{ $item->nama }}</td>
-                        <td>{{ $item->role }}</td>
+                        <td>{{ $item->no_hp }}</td>
+                        <td>
+                          @if ($item->role == 1)
+                            Petani
+                          @elseif($item->role == 2)
+                            Admin PPL
+                          @elseif($item->role == 3)
+                            Admin Penjualan
+                          @elseif($item->role == 4)
+                            Admin Keuangan
+                          @elseif($item->role == 5)
+                            Super Admin
+                          @endif
+                        </td>       
                         <td>
                             <a href="{{ url("/user/$item->id/edit") }}" class="btn btn-sm btn-info">Edit</a>
                             <form action="{{ url("/user/$item->id") }}" method="post" style="display: inline">
@@ -62,8 +74,8 @@
                   <tfoot>
                   <tr>
                     <th>Nomor</th>
-                    <th>NIK</th>
                     <th>Nama</th>
+                    <th>No Hp</th>
                     <th>Jabatan</th>
                     <th>Aksi</th>
                   </tr>
