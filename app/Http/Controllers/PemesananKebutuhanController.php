@@ -12,7 +12,7 @@ class PemesananKebutuhanController extends Controller
 {
     public function index()
     {
-        $product = Product::get();
+        $product = Product::where("active", 1)->get();
 
         return view("dashboard.pemesanan-kebutuhan.index", compact("product"));
     }

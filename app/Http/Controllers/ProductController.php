@@ -9,7 +9,7 @@ class ProductController extends Controller
 {
     public function index()
     {
-        $product = Product::where("active", 1)->get();
+        $product = Product::where("active", "=", 1)->get();
 
         return view("dashboard.product.index", compact("product"));
     }
