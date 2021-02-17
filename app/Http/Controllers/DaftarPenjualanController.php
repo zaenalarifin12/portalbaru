@@ -11,18 +11,46 @@ class DaftarPenjualanController extends Controller
 {
     public function index()
     {
-        $daftar_penjualan = DB::table("daftar_penjualan")->where("status", "belum")
-                ->join("user", "daftar_penjualan.user_id", "=", "user.id")
-                ->select(
-                    "daftar_penjualan.*",
-                    "user.nama",
-                    "user.nik",
-                    "user.alamat",
-                    "user.nama_ketua_kelompok"
-                )
-                ->get();
+        if (Auth::user()->role == 1) {
+            $daftar_penjualan = DB::table("daftar_penjualan")
+            ->join("user", "daftar_penjualan.user_id", "=", "user.id")
+            ->where("daftar_penjualan.status", "belum")
+            ->where("user.id", Auth::user()->id)
+            ->select(
+                "daftar_penjualan.*",
+                "user.nama",
+                "user.nik",
+                "user.alamat",
+                "user.nama_ketua_kelompok"
+            )
+            ->get();
 
-        return view("dashboard.daftar-penjualan.index", compact("daftar_penjualan"));
+            $jumlah_daftar = DB::table("daftar_penjualan")
+                            ->where("status", "belum")
+                            ->join("user", "daftar_penjualan.user_id", "=", "user.id")
+                            ->where("user.id", Auth::user()->id)
+                            ->count();
+        } else {
+            $daftar_penjualan = DB::table("daftar_penjualan")
+            ->join("user", "daftar_penjualan.user_id", "=", "user.id")
+            ->where("daftar_penjualan.status", "belum")
+            ->select(
+                "daftar_penjualan.*",
+                "user.nama",
+                "user.nik",
+                "user.alamat",
+                "user.nama_ketua_kelompok"
+            )
+            ->get();
+
+            $jumlah_daftar = DB::table("daftar_penjualan")
+                            ->where("status", "belum")
+                            ->count();
+        }
+        
+        
+
+        return view("dashboard.daftar-penjualan.index", compact("daftar_penjualan", "jumlah_daftar"));
     }
 
     public function create()

@@ -18,9 +18,13 @@
 
           @if (Auth::user()->role == 1)
 
-          <div class="col-sm-5 ">
-            <a href="{{ url("/daftar-penjualan/create") }}" class="btn btn-primary btn-sm float-right">Daftar</a>
-          </div>              
+          @if ($jumlah_daftar == 0)
+              
+            <div class="col-sm-5 ">
+              <a href="{{ url("/daftar-penjualan/create") }}" class="btn btn-primary btn-sm float-right">Daftar</a>
+            </div>              
+          @endif
+          
           @endif
 
         </div>

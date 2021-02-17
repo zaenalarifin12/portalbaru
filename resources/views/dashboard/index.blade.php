@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('style')
-  <link rel="stylesheet" href="{{ asset("assets/corousle.css") }}" integrity="sha512-UTNP5BXLIptsaj5WdKFrkFov94lDx+eBvbKyoe1YAfjeRPC+gT5kyZ10kOHCfNZqEui1sxmqvodNUx3KbuYI/A==" crossorigin="anonymous" />
+  <link rel="stylesheet" href="{{ asset("assets/corousle.css") }}" />
 
   <style>
     .image1{
