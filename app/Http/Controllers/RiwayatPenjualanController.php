@@ -59,7 +59,11 @@ class RiwayatPenjualanController extends Controller
         $hasil = DB::table("hasil_penjualan")
                     ->join("daftar_penjualan", "hasil_penjualan.daftar_penjualan_id", "=", "daftar_penjualan.id")
                     ->where("hasil_penjualan.id", $id)
-                    ->select("hasil_penjualan.id")
+                    ->select(
+                        "hasil_penjualan.*", 
+                        "daftar_penjualan.pembayaran AS pembayaran",
+                        "daftar_penjualan.jumlah_bal AS jumlah_bal"
+                        )
                     ->first();
 
         $laku = DB::table("laku_detail")
