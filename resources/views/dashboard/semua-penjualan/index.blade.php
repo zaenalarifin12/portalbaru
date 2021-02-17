@@ -43,6 +43,7 @@
                     <th>Nomor</th>
                     <th>jumlah bal</th>
                     <th>Pembayaran</th>
+                    <th>Status</th>
                     <th>Total</th>
                     <th>Tanggal</th>
                     <th>Aksi</th>
@@ -54,10 +55,14 @@
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $item->jumlah_bal }}</td>
                         <td>{{ $item->pembayaran }}</td>
+                        <td>{{ $item->status_pembayaran }}</td>
                         <td>Rp. {{ $item->total }}</td>
                         <td>{{ date ('d-M-Y', strtotime($item->created_at)) }}</td>
                         <td>
                             <a href="{{ url("/semua-penjualan/$item->id") }}" class="btn btn-sm btn-info">Detail</a>
+
+                            
+
                         </td>
                     </tr>
                     @endforeach
