@@ -24,9 +24,11 @@
       <div class="container-fluid">
         <div class="row">
 
-          <div class="col-12 float-right">
-            <a href="{{ url("riwayat-penjualan/cetak") }}" class="btn btn-success btn-sm float-right mb-2">Cetak</a>
-          </div>
+          @if (Auth::user()->role != 1)
+            <div class="col-12 float-right">
+              <a href="{{ url("riwayat-penjualan/cetak") }}" class="btn btn-success btn-sm float-right mb-2">Cetak</a>
+            </div>    
+          @endif
 
           <div class="col-12">
             <div class="card">

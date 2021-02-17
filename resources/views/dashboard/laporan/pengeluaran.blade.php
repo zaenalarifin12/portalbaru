@@ -35,24 +35,24 @@
                   <thead>
                   <tr>
                     <th>Nomor</th>
-                    <th>Barang</th>
+                    <th>laku</th>
                     <th>Total</th>
                     <th>Nama</th>
                     <th>Tanggal</th>
                   </tr>
                   </thead>
                   <tbody>
-                    @foreach ($order_product as $item)
+                    @foreach ($hasil_penjualan as $item)
                     <tr>
                         <td>{{ $loop->iteration }}</td>
                         @php
-                            $pr = Illuminate\Support\Facades\DB::table("order_detail")
-                              ->join("product", "order_detail.product_id", "=", "product.id")
-                              ->where("order_detail.order_id", $item->id)
+                            $pr = Illuminate\Support\Facades\DB::table("laku_detail")
+                              ->join("great", "laku_detail.great_id", "=", "great.id")
+                              ->where("laku_detail.hasil_penjualan_id", $item->id)
                               ->select(
-                                "order_detail.id",
-                                "order_detail.jumlah",
-                                "product.nama"
+                                "laku_detail.id",
+                                "laku_detail.jumlah",
+                                "great.nama"
                                 )
                               ->get();
                         @endphp

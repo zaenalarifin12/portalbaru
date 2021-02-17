@@ -15,36 +15,34 @@ class LaporanController extends Controller
 
     public function pemasukan()
     {
-        $hasil_penjualan    = DB::table("hasil_penjualan")
-                                ->join("daftar_penjualan", "hasil_penjualan.id", "=", "daftar_penjualan.id")
-                                ->join("user", "daftar_penjualan.user_id", "=", "user.id")
-                                ->latest()
-                                ->select(
-                                    "hasil_penjualan.*",
-                                    "user.nama"
-                                )
-                                ->get();
+        $order_product = DB::table("order_product")
+        ->join("user", "order_product.user_id", "=", "user.id")
+        ->select(
+            "order_product.*",
+            "user.nama"
+            )
+        ->latest()
+        ->get();
 
-        $total              = DB::table("hasil_penjualan")->sum("total");
+        $total = DB::table("order_product")->sum("total");
 
-        return view("dashboard.laporan.pemasukan", compact("hasil_penjualan", "total"));
+        return view("dashboard.laporan.pemasukan", compact("order_product", "total"));
     }
 
     public function cetak_pemasukan()
     {
-        $hasil_penjualan    = DB::table("hasil_penjualan")
-                                ->join("daftar_penjualan", "hasil_penjualan.id", "=", "daftar_penjualan.id")
-                                ->join("user", "daftar_penjualan.user_id", "=", "user.id")
-                                ->latest()
-                                ->select(
-                                    "hasil_penjualan.*",
-                                    "user.nama"
-                                )
-                                ->get();
+        $order_product = DB::table("order_product")
+        ->join("user", "order_product.user_id", "=", "user.id")
+        ->select(
+            "order_product.*",
+            "user.nama"
+            )
+        ->latest()
+        ->get();
 
-        $total              = DB::table("hasil_penjualan")->sum("total");
+        $total = DB::table("order_product")->sum("total");
 
-        $pdf = PDF::loadView('dashboard.laporan.cetak-pemasukan', compact("hasil_penjualan", "total"))
+        $pdf = PDF::loadView('dashboard.laporan.cetak-pemasukan', compact("order_product", "total"))
         ->setOptions(['defaultFont' => 'sans-serif']);
 
         return $pdf->stream('laporan-pemasukan.pdf');
@@ -53,34 +51,36 @@ class LaporanController extends Controller
 
     public function pengeluaran()
     {
-        $order_product = DB::table("order_product")
-                    ->join("user", "order_product.user_id", "=", "user.id")
-                    ->select(
-                        "order_product.*",
-                        "user.nama"
-                        )
-                    ->latest()
-                    ->get();
+        $hasil_penjualan    = DB::table("hasil_penjualan")
+                                ->join("daftar_penjualan", "hasil_penjualan.daftar_penjualan_id", "=", "daftar_penjualan.id")
+                                ->join("user", "daftar_penjualan.user_id", "=", "user.id")
+                                ->latest()
+                                ->select(
+                                    "hasil_penjualan.*",
+                                    "user.nama"
+                                )
+                                ->get();
 
-        $total = DB::table("order_product")->sum("total");
+        $total              = DB::table("hasil_penjualan")->sum("total");
 
-        return view("dashboard.laporan.pengeluaran", compact("order_product", "total"));
+        return view("dashboard.laporan.pengeluaran", compact("hasil_penjualan", "total"));
     }
 
     public function cetak_pengeluaran()
     {
-        $order_product = DB::table("order_product")
-                    ->join("user", "order_product.user_id", "=", "user.id")
-                    ->select(
-                        "order_product.*",
-                        "user.nama"
-                        )
-                    ->latest()
-                    ->get();
+        $hasil_penjualan    = DB::table("hasil_penjualan")
+                                ->join("daftar_penjualan", "hasil_penjualan.daftar_penjualan_id", "=", "daftar_penjualan.id")
+                                ->join("user", "daftar_penjualan.user_id", "=", "user.id")
+                                ->latest()
+                                ->select(
+                                    "hasil_penjualan.*",
+                                    "user.nama"
+                                )
+                                ->get();
 
-        $total = DB::table("order_product")->sum("total");
+        $total              = DB::table("hasil_penjualan")->sum("total");
 
-        $pdf = PDF::loadView('dashboard.laporan.cetak-pengeluaran', compact("order_product", "total"))
+        $pdf = PDF::loadView('dashboard.laporan.cetak-pengeluaran', compact("hasil_penjualan", "total"))
         ->setOptions(['defaultFont' => 'sans-serif']);
 
         return $pdf->stream('laporan-pengeluaran.pdf');        

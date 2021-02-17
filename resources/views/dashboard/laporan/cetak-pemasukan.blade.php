@@ -19,33 +19,51 @@
 <body>
   
     <h1>Laporan Pemasukan</h1>
-
-    <table id="example1" class="table table-bordered table-striped">
+  <table id="example1" class="table table-bordered table-striped">
         <thead>
         <tr>
-        <th>Nomor</th>
-        <th>Total</th>
-        <th>Nama</th>
-        <th>Tanggal</th>
+          <th>Nomor</th>
+          <th>Barang</th>
+          <th>Total</th>
+          <th>Nama</th>
+          <th>Tanggal</th>
         </tr>
         </thead>
         <tbody>
-        @foreach ($hasil_penjualan as $item)
-        <tr>
-            <td>{{ $loop->iteration }}</td>
-            <td>Rp. {{ $item->total }}</td>
-            <td>{{ $item->nama }}</td>
-            <td>{{ date ('d-M-Y', strtotime($item->created_at)) }}</td>
-            
-        </tr>
-        @endforeach
+          @foreach ($order_product as $item)
+          <tr>
+              <td>{{ $loop->iteration }}</td>
+
+              @php
+                  $pr = Illuminate\Support\Facades\DB::table("order_detail")
+                    ->join("product", "order_detail.product_id", "=", "product.id")
+                    ->where("order_detail.order_id", $item->id)
+                    ->select(
+                      "order_detail.id",
+                      "order_detail.jumlah",
+                      "product.nama"
+                      )
+                    ->get();
+              @endphp
+              <td>
+                @foreach ($pr as $item2)
+                    {{ $item2->nama }} : {{ $item2->jumlah }} <br>
+                @endforeach
+
+              <td>Rp. {{ $item->total }}</td>
+              <td>{{ $item->nama }}</td>
+              <td>{{ date ('d-M-Y', strtotime($item->created_at)) }}</td>
+              
+          </tr>
+          @endforeach
         </tbody>
+           
         <tfoot>
-        <tr>
-            <th colspan="1" style="text-align:right">Total : Semuanya</th>
-            <th colspan="3" style="text-align: left">Rp. {{ $total }}</th>
-        </tr>
-    </tfoot>
+          <tr>
+              <th colspan="1" style="text-align:right">Total : Semuanya</th>
+              <th colspan="3" style="text-align: left">Rp. {{ $total }}</th>
+          </tr>
+        </tfoot>
     </table>
   
 </body>
