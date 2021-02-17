@@ -9,20 +9,34 @@ use App\DaftarPenjualan;
 use App\LakuDetail;
 use App\TidakLakuDetail;
 use Illuminate\Support\Facades\DB;
+use Auth;
 
 class HasilPenjualanController extends Controller
 {
     public function index($id)
     {
-        $hasil = DB::table("daftar_penjualan")
+
+        if (Auth::user()->role == 1) {
+            $hasil = DB::table("daftar_penjualan")
+            ->join("user", "daftar_penjualan.user_id", "=", "user.id")
+            ->where("daftar_penjualan.id", $id)
+            ->where("daftar_penjualan.status", "belum")
+            ->where("user.id", Auth::user()->id)
+            ->select("daftar_penjualan.*", 
+                "user.nama"
+            )
+            ->first();
+        } else {
+            $hasil = DB::table("daftar_penjualan")
             ->join("user", "daftar_penjualan.user_id", "=", "user.id")
             ->where("daftar_penjualan.id", $id)
             ->where("daftar_penjualan.status", "belum")
             ->select("daftar_penjualan.*", 
-                "user.nama",
+                "user.nama"
             )
             ->first();
-
+        }
+        
         $greate = Greate::get();
 
         return view("dashboard.hasil-penjualan.index", compact("greate", "hasil"));
