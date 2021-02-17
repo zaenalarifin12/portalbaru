@@ -80,7 +80,7 @@ class ProductController extends Controller
     {
         $product = Product::findOrFail($id);
         $product->update([
-            "active", 0
+            "active" => 0
         ]);
 
         return redirect("/product")->with("msg", "product berhasil dihapus");

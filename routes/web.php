@@ -47,6 +47,10 @@ Route::group(["middleware" => ["auth"]], function(){
     Route::get('/semua-penjualan/{id}',                 "SemuaPenjualanController@show");
     // Route::put('/semua-pesanan/{id}',                "SemuaPesananController@update");
 
+    Route::get('/semua-penjualan/{id}/konfirmasi',      "SemuaPenjualanController@showKonfirmasi");
+    Route::put('/semua-penjualan/{id}/konfirmasi/text',         "SemuaPenjualanController@updateKonfirmasiText");
+    Route::put('/semua-penjualan/{id}/konfirmasi/gambar',      "SemuaPenjualanController@updateKonfirmasiGambar");
+
     Route::get('/riwayat-penjualan',                    "RiwayatPenjualanController@index");
     Route::get('/riwayat-penjualan/cetak',              "RiwayatPenjualanController@cetak");
     Route::get('/riwayat-penjualan/{id}',               "RiwayatPenjualanController@show");

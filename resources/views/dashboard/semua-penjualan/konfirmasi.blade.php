@@ -8,7 +8,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Detail Hasil Penjualan</h1>
+            <h1>Konfirmasi Detail Hasil Penjualan</h1>
           </div>
           <div class="col-sm-6">
           </div>
@@ -56,22 +56,27 @@
 
     @endif       
         
-
-    @if ($hasil->status_pembayaran == "sudah lunas")
-    
-        @if ($hasil->pembayaran == "transfer")
-            <p>Bukti transfer</p><br>
-            <img width="500px" src="{{ asset("/storage/$hasil->struck") }}" alt="" srcset="">
-        @else
-            <h3c class="text-success">Sudah Terbayar</h3>
-        @endif
-
+    @if ($hasil->pembayaran == "ditempat")
+        <form action="{{ url("/semua-penjualan/$hasil->id/konfirmasi/text") }}" method="post">
+            <button type="submit" class="btn btn-success btn-sm">Konfirmasi Sudah terbayar</button>
+            @method("PUT")
+            @csrf
+        </form>    
+    @else
+        <form action="{{ url("/semua-penjualan/$hasil->id/konfirmasi/gambar") }}" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="">Upload Foto Bukti tranfer</label>
+                <input type="file" name="gambar" class="form-control">
+            </div>
+            
+            <button type="submit" class="btn btn-success btn-sm">Upload</button>
+            @method("PUT")
+            @csrf
+        </form>
     @endif
-
-        <!-- /.row -->
+    
       </div>
     </section>
-    <!-- /.content -->
 
     <a id="back-to-top" href="#" class="btn btn-primary back-to-top" role="button" aria-label="Scroll to top">
       <i class="fas fa-chevron-up"></i>

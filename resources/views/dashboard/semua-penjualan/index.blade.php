@@ -61,7 +61,9 @@
                         <td>
                             <a href="{{ url("/semua-penjualan/$item->id") }}" class="btn btn-sm btn-info">Detail</a>
 
-                            
+                            @if ($item->status_pembayaran == "belum lunas")
+                              <a href="{{ url("/semua-penjualan/$item->id/konfirmasi") }}" class="btn btn-sm btn-success">Konfirmasi</a>    
+                            @endif
 
                         </td>
                     </tr>
@@ -72,6 +74,7 @@
                     <th>Nomor</th>
                     <th>jumlah bal</th>
                     <th>Pembayaran</th>
+                    <th>Status</th>
                     <th>Total</th>
                     <th>Tanggal</th>
                     <th>Aksi</th>
@@ -90,7 +93,7 @@
       <!-- /.container-fluid -->
     </section>
     <!-- /.content -->
-  </div>>
+  </div>
 @endsection
 
 @section('script')
