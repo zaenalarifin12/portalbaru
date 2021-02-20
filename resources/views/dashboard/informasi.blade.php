@@ -22,8 +22,13 @@
         <div class="card card-default">
           <!-- /.card-header -->
           <div class="card-body">
-          
-            <p>{{ $informasi->content ?? "informasi kosong" }}</p>
+
+            @forelse ($informasi as $item)
+              <p>{{ $item->content }}</p>
+            @empty
+              <p>{{ "informasi kosong" }}</p>  
+            @endforelse
+            
             
           </div>
           

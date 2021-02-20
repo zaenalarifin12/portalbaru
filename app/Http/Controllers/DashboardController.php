@@ -15,7 +15,7 @@ class DashboardController extends Controller
 
     public function informasi()
     {
-        $informasi = Informasi::latest()->first();
+        $informasi = Informasi::orderBy("id", "DESC")->get();
 
         return view("dashboard.informasi", compact("informasi"));
     }
