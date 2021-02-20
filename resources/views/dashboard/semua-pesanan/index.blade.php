@@ -56,17 +56,6 @@
                     </tr>
                     @endforeach
                   </tbody>
-                  <tfoot>
-                  <tr>
-                    <th>OrderID</th>
-                    <th>Total</th>
-                    <th>Status</th>
-                    <th>Tanggal</th>
-                    <th>Nama</th>
-                    <th>Jenis Pembayaran</th>
-                    <th>Aksi</th>
-                  </tr>
-                  </tfoot>
                 </table>
               </div>
               <!-- /.card-body -->

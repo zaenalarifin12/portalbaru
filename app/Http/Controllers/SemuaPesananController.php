@@ -54,6 +54,17 @@ class SemuaPesananController extends Controller
             "status" => "terkirim"
         ]);
 
+        return redirect("/semua-pesanan/$order->id")->with("msg", "pesanan berhasil terkirim");
+    }
+
+    public function dikirim($id)
+    {
+        $order = OrderProduct::findOrFail($id);
+        
+        $order->update([
+            "status" => "dikirim"
+        ]);
+
         return redirect("/semua-pesanan/$order->id")->with("msg", "pesanan berhasil dikirim");
     }
 }

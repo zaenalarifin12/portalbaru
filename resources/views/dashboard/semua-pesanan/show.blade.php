@@ -57,6 +57,8 @@
     </div>
         @if ($order->status == "belum")
             <p class="text-primary">Status : {{ $order->status }}</p>
+        @elseif ($order->status == "dikirim")
+            <p class="text-primary">Status : {{ $order->status }}</p>
         @else 
             <p class="text-success">Status : {{ $order->status }}</p>
         @endif
@@ -67,13 +69,37 @@
         @endif
         
 
-        @if ($order->status == "belum")
+          
+        @if (
+        Auth::user()->role == 3 ||
+        Auth::user()->role == 5
+        )
+
+          @if ($order->status == "belum")
+            <form action="{{ url("/semua-pesanan/$order->id/dikirim") }}" method="post">
+                @method("PUT")
+                @csrf
+                <button class="btn btn-sm btn-info">Konfirmasi Dikirim</button>
+            </form>    
+          @endif
+        
+        @endif
+
+        @if (Auth::user()->role == 1)
+
+          @if ($order->status == "dikirim")
             <form action="{{ url("/semua-pesanan/$order->id") }}" method="post">
                 @method("PUT")
                 @csrf
                 <button class="btn btn-sm btn-info">Konfirmasi Terkirim</button>
             </form>    
+          @endif
+
         @endif
+       
+
+
+
         
         <!-- /.row -->
       </div>

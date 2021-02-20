@@ -79,23 +79,6 @@
                     </tr>
                     @endforeach
                   </tbody>
-                  <tfoot>
-                    <tr>
-                        <th>Nomor</th>
-                        <th>NIK</th>
-                        <th>Nama</th>
-                        <th>NO HP</th>
-                        <th>alamat</th>
-                        <th>rt</th>
-                        <th>rw</th>
-                        <th>kecamatan</th>
-                        <th>kabupaten</th>
-                        <th>nama ketua kelompok</th>
-                        <th>tahun tanam</th>
-                        <th>jumlah paket</th>
-                        <th>nomor rekening</th>
-                      </tr>
-                  </tfoot>
                 </table>
               </div>
               <!-- /.card-body -->

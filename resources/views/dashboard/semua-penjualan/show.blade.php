@@ -27,7 +27,7 @@
                 <thead>                  
                     <tr>
                         <th style="width: 10px">Nomor</th>
-                        <th>Nama</th>
+                        <th>Great</th>
                         <th>Jumlah (bal)</th>
                         <th>Jumlah (kg)</th>
                         <th>Total</th>

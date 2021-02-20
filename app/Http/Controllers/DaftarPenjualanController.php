@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\DaftarPenjualan;
 use Illuminate\Support\Facades\DB;
 use Auth;
+use PDF;
 
 class DaftarPenjualanController extends Controller
 {
@@ -20,6 +21,7 @@ class DaftarPenjualanController extends Controller
                 "daftar_penjualan.*",
                 "user.nama",
                 "user.nik",
+                "user.nomor_rekening",
                 "user.alamat",
                 "user.nama_ketua_kelompok"
             )
@@ -30,7 +32,24 @@ class DaftarPenjualanController extends Controller
                             ->join("user", "daftar_penjualan.user_id", "=", "user.id")
                             ->where("user.id", Auth::user()->id)
                             ->count();
-        } else {
+        }
+        elseif(Auth::user()->role == 2){
+            $daftar_penjualan = DB::table("daftar_penjualan")
+            ->join("user", "daftar_penjualan.user_id", "=", "user.id")
+            ->select(
+                "daftar_penjualan.*",
+                "user.nama",
+                "user.nik",
+                "user.nomor_rekening",
+                "user.alamat",
+                "user.nama_ketua_kelompok"
+            )
+            ->get();
+
+            $jumlah_daftar = DB::table("daftar_penjualan")
+                            ->count();
+        }
+        else {
             $daftar_penjualan = DB::table("daftar_penjualan")
             ->join("user", "daftar_penjualan.user_id", "=", "user.id")
             ->where("daftar_penjualan.status", "belum")
@@ -38,6 +57,7 @@ class DaftarPenjualanController extends Controller
                 "daftar_penjualan.*",
                 "user.nama",
                 "user.nik",
+                "user.nomor_rekening",
                 "user.alamat",
                 "user.nama_ketua_kelompok"
             )
@@ -100,9 +120,28 @@ class DaftarPenjualanController extends Controller
     }
 
     
-    public function check(Type $var = null)
+    public function cetak()
     {
-        # code...
+        $daftar_penjualan = DB::table("daftar_penjualan")
+        ->join("user", "daftar_penjualan.user_id", "=", "user.id")
+        ->select(
+            "daftar_penjualan.*",
+            "user.nama",
+            "user.nomor_rekening",
+            "user.nik",
+            "user.alamat",
+            "user.nama_ketua_kelompok"
+        )
+        ->get();
+
+        $jumlah_daftar = DB::table("daftar_penjualan")
+                        ->count();
+
+        $pdf = PDF::loadView('dashboard.daftar-penjualan.cetak', compact("daftar_penjualan", "jumlah_daftar"))
+        
+            ->setOptions(['defaultFont' => 'sans-serif'])->setPaper('a4', 'landscape');
+
+        return $pdf->stream('daftar-penjualan.pdf');
     }
 
 

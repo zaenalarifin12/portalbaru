@@ -31,10 +31,12 @@ Route::group(["middleware" => ["auth"]], function(){
     Route::get('/semua-pesanan',                        "SemuaPesananController@index");
     Route::get('/semua-pesanan/{id}',                   "SemuaPesananController@show");
     Route::put('/semua-pesanan/{id}',                   "SemuaPesananController@update");
+    Route::put('/semua-pesanan/{id}/dikirim',           "SemuaPesananController@dikirim");
     
 
     Route::get('/daftar-penjualan',                     "DaftarPenjualanController@index");
     Route::get('/daftar-penjualan/create',              "DaftarPenjualanController@create");
+    Route::get('/daftar-penjualan/cetak',              "DaftarPenjualanController@cetak");
     Route::post('/daftar-penjualan',                    "DaftarPenjualanController@store");
     Route::get('/daftar-penjualan/{id}/edit',           "DaftarPenjualanController@edit");
     Route::put('/daftar-penjualan/{id}',                "DaftarPenjualanController@update");

@@ -19,6 +19,10 @@
       <div class="container-fluid">
 
         <h5>total pesanan saya : Rp. {{ $orderProduct->total }} </h5>
+        <br>
+        <p>Nomor Rekening PT : 5675675675675</p>
+        <p>Atas Nama PT XXXXXX</p>
+        
         <form action="{{ url("/pesanan-struck/$orderProduct->id") }}" method="post" enctype="multipart/form-data">
 
             <div class="row">

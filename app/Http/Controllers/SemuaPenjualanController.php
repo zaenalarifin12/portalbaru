@@ -20,7 +20,8 @@ class SemuaPenjualanController extends Controller
                     ->select(
                         "hasil_penjualan.*", 
                         "daftar_penjualan.pembayaran AS pembayaran",
-                        "daftar_penjualan.jumlah_bal AS jumlah_bal"
+                        "daftar_penjualan.jumlah_bal AS jumlah_bal",
+                        "user.nama"
                         )
                     ->latest()
                     ->get();
@@ -30,7 +31,8 @@ class SemuaPenjualanController extends Controller
                     ->select(
                         "hasil_penjualan.*", 
                         "daftar_penjualan.pembayaran AS pembayaran",
-                        "daftar_penjualan.jumlah_bal AS jumlah_bal"
+                        "daftar_penjualan.jumlah_bal AS jumlah_bal",
+                        "user.nama"
                         )
                     ->latest()
                     ->get();

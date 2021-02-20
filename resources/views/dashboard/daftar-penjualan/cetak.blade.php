@@ -19,34 +19,31 @@
 </head>
 <body>
 
-    <h3>Daftar Petani</h3>
+    <h3>Daftar Penjualan</h3>
 
-    <table style="">
+    <table id="example1" class="table table-bordered table-striped">
         <thead>
         <tr>
           <th>Nomor</th>
-          <th>NO Rekening</th>
+          <th>Jumlah bal</th>
+          <th>Pembayaran</th>
           <th>Nama</th>
-          <th>NO HP</th>
-          <th>alamat</th>
-          <th>rt</th>
-          <th>rw</th>
-          <th>kecamatan</th>
-          <th>nama ketua kelompok</th>
+          <th>NO Rekening</th>
+          <th>Alamat</th>
+          <th>Nama Ketua Kelompok</th>
+          
         </tr>
         </thead>
         <tbody>
-          @foreach ($users as $item)
+          @foreach ($daftar_penjualan as $item)
           <tr>
               <td>{{ $loop->iteration }}</td>
-              <td>{{ $item->nomor_rekening }}</td>
-              <td>{{ $item->nama }}</td>
-              <td>{{ $item->no_hp }}</td>
-              <td>{{ $item->alamat }}</td>
-              <td>{{ $item->rt }}</td>
-              <td>{{ $item->rw }}</td>
-              <td>{{ $item->kecamatan }}</td>
-              <td>{{ $item->nama_ketua_kelompok }}</td>
+              <td>{{ $item->jumlah_bal }}</td>
+              <td>{{ $item->pembayaran }}</td>
+              <td> {{ $item->nama }} </td>
+              <td> {{ $item->nomor_rekening }} </td>
+              <td> {{ $item->alamat }} </td>
+              <td> {{ $item->nama_ketua_kelompok }} </td> 
           </tr>
           @endforeach
         </tbody>

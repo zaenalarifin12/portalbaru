@@ -46,6 +46,7 @@
                     <th>Status</th>
                     <th>Total</th>
                     <th>Tanggal</th>
+                    <th>Nama</th>
                     <th>Aksi</th>
                   </tr>
                   </thead>
@@ -58,6 +59,7 @@
                         <td>{{ $item->status_pembayaran }}</td>
                         <td>Rp. {{ $item->total }}</td>
                         <td>{{ date ('d-M-Y', strtotime($item->created_at)) }}</td>
+                        <td>{{ $item->nama }}</td>
                         <td>
                             <a href="{{ url("/semua-penjualan/$item->id") }}" class="btn btn-sm btn-info">Detail</a>
 
@@ -69,17 +71,6 @@
                     </tr>
                     @endforeach
                   </tbody>
-                  <tfoot>
-                  <tr>
-                    <th>Nomor</th>
-                    <th>jumlah bal</th>
-                    <th>Pembayaran</th>
-                    <th>Status</th>
-                    <th>Total</th>
-                    <th>Tanggal</th>
-                    <th>Aksi</th>
-                  </tr>
-                  </tfoot>
                 </table>
               </div>
               <!-- /.card-body -->

@@ -22,6 +22,25 @@ class RiwayatPenjualanController extends Controller
             ->where("daftar_penjualan.user_id", "=", Auth::user()->id)
             ->get();
     
+            $totalBal = DB::table("hasil_penjualan")
+            ->join("daftar_penjualan", "hasil_penjualan.daftar_penjualan_id", "=", "daftar_penjualan.id")
+            ->join("laku_detail", "hasil_penjualan.id", "=", "laku_detail.hasil_penjualan_id")
+            ->select(
+                "laku_detail.bal"
+                )
+            ->where("daftar_penjualan.user_id", "=", Auth::user()->id)
+            ->sum("laku_detail.bal");
+
+            $totalBobot = DB::table("hasil_penjualan")
+            ->join("daftar_penjualan", "hasil_penjualan.daftar_penjualan_id", "=", "daftar_penjualan.id")
+            ->join("laku_detail", "hasil_penjualan.id", "=", "laku_detail.hasil_penjualan_id")
+            ->select(
+                "laku_detail.jumlah"
+                )
+            ->where("daftar_penjualan.user_id", "=", Auth::user()->id)
+            ->sum("laku_detail.jumlah");
+
+
             $totalSemua = DB::table("hasil_penjualan")
             ->join("daftar_penjualan", "hasil_penjualan.daftar_penjualan_id", "=", "daftar_penjualan.id")
             ->select(
@@ -41,6 +60,23 @@ class RiwayatPenjualanController extends Controller
                 )
             ->get();
     
+            
+            $totalBal = DB::table("hasil_penjualan")
+            ->join("daftar_penjualan", "hasil_penjualan.daftar_penjualan_id", "=", "daftar_penjualan.id")
+            ->join("laku_detail", "hasil_penjualan.id", "=", "laku_detail.hasil_penjualan_id")
+            ->select(
+                "laku_detail.bal"
+                )
+            ->sum("laku_detail.bal");
+
+            $totalBobot = DB::table("hasil_penjualan")
+            ->join("daftar_penjualan", "hasil_penjualan.daftar_penjualan_id", "=", "daftar_penjualan.id")
+            ->join("laku_detail", "hasil_penjualan.id", "=", "laku_detail.hasil_penjualan_id")
+            ->select(
+                "laku_detail.jumlah"
+                )
+            ->sum("laku_detail.jumlah");
+
             $totalSemua = DB::table("hasil_penjualan")
             ->join("daftar_penjualan", "hasil_penjualan.daftar_penjualan_id", "=", "daftar_penjualan.id")
             ->select(
@@ -51,7 +87,7 @@ class RiwayatPenjualanController extends Controller
             ->sum("hasil_penjualan.total");
         }
 
-        return view("dashboard.riwayat-penjualan.index", compact("hasil", "totalSemua"));
+        return view("dashboard.riwayat-penjualan.index", compact("hasil", "totalSemua", "totalBal", "totalBobot"));
     }
 
     public function show($id)

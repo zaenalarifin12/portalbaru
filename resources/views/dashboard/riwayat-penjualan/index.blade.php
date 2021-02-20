@@ -38,6 +38,7 @@
                   <tr>
                     <th>Nomor</th>
                     <th>jumlah bal</th>
+                    <th>jumlah Bobot</th>
                     <th>Pembayaran</th>
                     <th>Total</th>
                     <th>Aksi</th>
@@ -48,6 +49,12 @@
                     <tr>
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $item->jumlah_bal }}</td>
+                        @php
+                            $totalBobot = Illuminate\Support\Facades\DB::table("laku_detail")
+                            ->where("hasil_penjualan_id", $item->id)->sum("jumlah");
+                        @endphp
+                        
+                        <td>{{ $totalBbt }}</td>
                         <td>{{ $item->pembayaran }}</td>
                         <td>Rp. {{ $item->total }}</td>
                         <td>
@@ -58,8 +65,10 @@
                   </tbody>
                   <tfoot>
                     <tr>
-                        <th colspan="3" style="text-align:right">Total : Semuanya</th>
-                        <th colspan="2">{{ $totalSemua }}</th>
+                        <th colspan="1">Rp. {{ $totalSemua }}</th>
+                        <th colspan="1">{{ $totalBal }}</th>
+                        <th colspan="1">{{ $totalBobot }}</th>
+                        <th colspan="2"></th>
                     </tr>
                 </tfoot>
                 

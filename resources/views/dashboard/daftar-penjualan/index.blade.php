@@ -35,6 +35,14 @@
     <section class="content">
       <div class="container-fluid">
         <div class="row">
+
+          @if (Auth::user()->role == 2 || Auth::user()->role == 5)
+            <div class="col-12 float-right">
+              <a href="{{ url("daftar-penjualan/cetak") }}" class="btn btn-success btn-sm float-right mb-2">Cetak</a>
+            </div>     
+          @endif
+          
+
           <div class="col-12">
 
             <div class="card">
@@ -46,7 +54,7 @@
                     <th>Jumlah bal</th>
                     <th>Pembayaran</th>
                     <th>Nama</th>
-                    <th>NIK</th>
+                    <th>NO Rekening</th>
                     <th>Alamat</th>
                     <th>Nama Ketua Kelompok</th>
                     
@@ -65,7 +73,7 @@
                         <td>{{ $item->jumlah_bal }}</td>
                         <td>{{ $item->pembayaran }}</td>
                         <td> {{ $item->nama }} </td>
-                        <td> {{ $item->nik }} </td>
+                        <td> {{ $item->nomor_rekening }} </td>
                         <td> {{ $item->alamat }} </td>
                         <td> {{ $item->nama_ketua_kelompok }} </td>
                         @if (
@@ -92,22 +100,6 @@
                     </tr>
                     @endforeach
                   </tbody>
-                  <tfoot>
-                  <tr>
-                    <th>Nomor</th>
-                    <th>Jumlah bal</th>
-                    <th>Pembayaran</th>
-                    <th>Nama</th>
-                    <th>NIK</th>
-                    <th>Alamat</th>
-                    <th>Nama Ketua Kelompok</th>
-                    @if (
-                      Auth::user()->role != 2
-                    )
-                    <th>Aksi</th>    
-                    @endif
-                  </tr>
-                  </tfoot>
                 </table>
               </div>
               <!-- /.card-body -->

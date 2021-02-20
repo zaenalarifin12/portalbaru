@@ -80,19 +80,17 @@ class PesananSayaController extends Controller
                 $cart = CartProduct::where("user_id", Auth::user()->id)->first();
                 
                 $cartDetail = CartDetail::where("cart_id", $cart->id)->get();
-                
+
                 $total = 0;
 
                 for ($i=0; $i < count($request->id); $i++) { 
                  
                     $cd = CartDetail::where("cart_id", $cart->id)
                                             ->where("product_id", $request->id[$i])
-                                            ->first();
-                
-                    $cd->update([
+                                            ->update([
                         "jumlah" => $request->jumlah[$i]
                     ]);
-
+                
                     $p = Product::where("id", $request->id[$i])->first();
                     
                     $jumlahPerProduct = $p->harga * $request->jumlah[$i];
@@ -100,7 +98,7 @@ class PesananSayaController extends Controller
                     $total += $jumlahPerProduct;
 
                 }
-                
+
                 $order = OrderProduct::create([
                     "total"         => $total,
                     "pembayaran"    => $request->action,
@@ -109,6 +107,9 @@ class PesananSayaController extends Controller
                     "user_id"       => Auth::user()->id
                 ]);
                 
+                $cartDetail = CartDetail::where("cart_id", $cart->id)->get();
+
+
                 foreach ($cartDetail as $item) {
                     DB::table("order_detail")->insert([
                         "order_id"      => $order->id, 
@@ -151,13 +152,15 @@ class PesananSayaController extends Controller
                 }
                 
                 $order = OrderProduct::create([
-                    "total"         => $total,
+                    "total"         => $total + 10000,
                     "pembayaran"    => $request->action,
                     "struk"         => "",
                     "status"        => "belum",
                     "user_id"       => Auth::user()->id
                 ]);
                 
+                $cartDetail = CartDetail::where("cart_id", $cart->id)->get();
+
                 foreach ($cartDetail as $item) {
                     DB::table("order_detail")->insert([
                         "order_id"      => $order->id, 
