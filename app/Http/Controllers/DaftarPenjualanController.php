@@ -105,8 +105,8 @@ class DaftarPenjualanController extends Controller
             "jumlah_bal"    => $request->jumlah_bal,
             "pembayaran"    => $request->pembayaran,
             "status"        => "belum",
-            "user_id"       => Auth::user()->id
         ]);
+
 
         return redirect("/daftar-penjualan")->with("msg", "anda berhasil mengupdate penjualan");
     }

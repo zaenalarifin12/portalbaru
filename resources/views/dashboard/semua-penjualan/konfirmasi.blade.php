@@ -19,15 +19,17 @@
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
+        <p>Nomor Rekening Petani : <b>{{ $hasil->nomor_rekening }} ({{ $hasil->nama }})</b> </p>
+
+        <p>Laku</p>
 
         <div class="row">
-            
-            <p>Laku</p>
+          
             <table class="table table-bordered">
                 <thead>                  
                     <tr>
                         <th style="width: 10px">Nomor</th>
-                        <th>Nama</th>
+                        <th>great</th>
                         <th>Jumlah (bal)</th>
                         <th>Jumlah (kg)</th>
                         <th>Total</th>

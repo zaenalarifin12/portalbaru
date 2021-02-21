@@ -28,6 +28,7 @@ class SemuaPenjualanController extends Controller
         } else {
             $hasil = DB::table("hasil_penjualan")
                     ->join("daftar_penjualan", "hasil_penjualan.daftar_penjualan_id", "=", "daftar_penjualan.id")
+                    ->join("user", "daftar_penjualan.user_id", "=", "user.id")
                     ->select(
                         "hasil_penjualan.*", 
                         "daftar_penjualan.pembayaran AS pembayaran",
@@ -69,8 +70,11 @@ class SemuaPenjualanController extends Controller
     {
         $hasil = DB::table("hasil_penjualan")
                     ->join("daftar_penjualan", "hasil_penjualan.daftar_penjualan_id", "=", "daftar_penjualan.id")
+                    ->join("user", "daftar_penjualan.user_id", "=", "user.id")
                     ->where("hasil_penjualan.id", $id)
                     ->select(
+                        "user.nama",
+                        "user.nomor_rekening",
                         "hasil_penjualan.id",
                         "daftar_penjualan.pembayaran"
                         )
