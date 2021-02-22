@@ -100,7 +100,7 @@ class PesananSayaController extends Controller
                 }
 
                 $order = OrderProduct::create([
-                    "total"         => $total,
+                    "total"         => $total + 10000,
                     "pembayaran"    => $request->action,
                     "struk"         => "",
                     "status"        => "belum",
