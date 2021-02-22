@@ -62,7 +62,8 @@
         @else 
             <p class="text-success">Status : {{ $order->status }}</p>
         @endif
-        <p>Total : {{$order->total}}</p>
+        <p>total Kebutuhan : Rp. {{$order->total - 10000}} + Rp. 10000</p>
+        <p>Total : {{$order->total }}</p>
 
         @if (!empty($order->struk))
           <img class="mb-4" width="500px" src="{{ asset("/storage/$order->struk") }}" alt="" srcset="">    

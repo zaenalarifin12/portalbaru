@@ -99,8 +99,10 @@ class PesananSayaController extends Controller
 
                 }
 
+                $total_dan_ongkir = $total + 10000;
+                
                 $order = OrderProduct::create([
-                    "total"         => $total + 10000,
+                    "total"         => $total_dan_ongkir,
                     "pembayaran"    => $request->action,
                     "struk"         => "",
                     "status"        => "belum",
