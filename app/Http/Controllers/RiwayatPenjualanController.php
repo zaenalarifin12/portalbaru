@@ -53,8 +53,10 @@ class RiwayatPenjualanController extends Controller
         }else{
             $hasil = DB::table("hasil_penjualan")
             ->join("daftar_penjualan", "hasil_penjualan.daftar_penjualan_id", "=", "daftar_penjualan.id")
+            ->join("user", "daftar_penjualan.user_id", "=", "user.id")
             ->select(
                 "hasil_penjualan.*", 
+                "user.nama AS nama",
                 "daftar_penjualan.pembayaran AS pembayaran",
                 "daftar_penjualan.jumlah_bal AS jumlah_bal"
                 )

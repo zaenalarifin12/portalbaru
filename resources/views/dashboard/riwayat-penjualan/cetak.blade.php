@@ -29,9 +29,9 @@
                   <thead>
                   <tr>
                     <th>Nomor</th>
-                    <th>NIK</th>
                     <th>nama</th>
-                    <th>jumlah bal</th>
+                    <th>Jumlah Bal</th>
+                    <th>bobot</th>
                     <th>Pembayaran</th>
                     <th>Total</th>
                     
@@ -41,7 +41,9 @@
                     @foreach ($hasil as $item)
                     <tr>
                         <td>{{ $loop->iteration }}</td>
+                        <td>{{ $item->nama }}</td>
                         <td>{{ $item->jumlah_bal }}</td>
+                        
                         @php
                             $pertotalBobot = Illuminate\Support\Facades\DB::table("laku_detail")
                             ->where("hasil_penjualan_id", $item->id)->sum("jumlah");
@@ -59,11 +61,11 @@
                   <tfoot>
                     <tr>
                       <th colspan="1"></th>
+                      <th colspan="1"></th>
                       <th colspan="1">{{ $totalBal }}</th>
                       <th colspan="1">{{ $totalBobot }}</th>
                       <th colspan="1"></th>
                       <th colspan="1">Rp. {{ $totalSemua }}</th>
-                      <th colspan="1"></th>
                     </tr>
                   </tfoot>
 
