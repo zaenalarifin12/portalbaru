@@ -37,7 +37,10 @@
                   <thead>
                   <tr>
                     <th>Nomor</th>
-                    <th>nama</th>
+                    @if (Auth::user()->role != 1)
+                      <th>nama</th>    
+                    @endif
+                    
                     <th>jumlah bal</th>
                     <th>jumlah Bobot</th>
                     <th>Pembayaran</th>
@@ -49,7 +52,10 @@
                     @foreach ($hasil as $item)
                     <tr>
                         <td>{{ $loop->iteration }}</td>
-                        <td>{{ $item->nama }}</td>
+                        @if (Auth::user()->role != 1)
+                          <td>{{ $item->nama }}</td>
+                        @endif
+                        
                         <td>{{ $item->jumlah_bal }}</td>
                         @php
                             $pertotalBobot = Illuminate\Support\Facades\DB::table("laku_detail")
@@ -68,7 +74,10 @@
                   <tfoot>
                     <tr>
                         <th colspan="1"></th>
-                        <th colspan="1"></th>
+                        @if (Auth::user()->role != 1)
+                          <th colspan="1"></th>
+                        @endif
+                        
                         <th colspan="1">{{ $totalBal }}</th>
                         <th colspan="1">{{ $totalBobot }}</th>
                         <th colspan="1"></th>
