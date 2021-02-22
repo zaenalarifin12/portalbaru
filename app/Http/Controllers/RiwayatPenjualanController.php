@@ -129,16 +129,33 @@ class RiwayatPenjualanController extends Controller
                 )
             ->get();
     
-            $totalSemua = DB::table("hasil_penjualan")
-            ->join("daftar_penjualan", "hasil_penjualan.daftar_penjualan_id", "=", "daftar_penjualan.id")
-            ->select(
-                "hasil_penjualan.*", 
-                "daftar_penjualan.pembayaran AS pembayaran",
-                "daftar_penjualan.jumlah_bal AS jumlah_bal"
-                )
-            ->sum("hasil_penjualan.total");
+        $totalBal = DB::table("hasil_penjualan")
+        ->join("daftar_penjualan", "hasil_penjualan.daftar_penjualan_id", "=", "daftar_penjualan.id")
+        ->join("laku_detail", "hasil_penjualan.id", "=", "laku_detail.hasil_penjualan_id")
+        ->select(
+            "laku_detail.bal"
+            )
+        ->sum("laku_detail.bal");
 
-        $pdf = PDF::loadView('dashboard.riwayat-penjualan.cetak', compact("hasil", "totalSemua"))
+        $totalBobot = DB::table("hasil_penjualan")
+        ->join("daftar_penjualan", "hasil_penjualan.daftar_penjualan_id", "=", "daftar_penjualan.id")
+        ->join("laku_detail", "hasil_penjualan.id", "=", "laku_detail.hasil_penjualan_id")
+        ->select(
+            "laku_detail.jumlah"
+            )
+        ->sum("laku_detail.jumlah");
+
+        $totalSemua = DB::table("hasil_penjualan")
+        ->join("daftar_penjualan", "hasil_penjualan.daftar_penjualan_id", "=", "daftar_penjualan.id")
+        ->select(
+            "hasil_penjualan.*", 
+            "daftar_penjualan.pembayaran AS pembayaran",
+            "daftar_penjualan.jumlah_bal AS jumlah_bal"
+            )
+        ->sum("hasil_penjualan.total");
+
+        
+        $pdf = PDF::loadView('dashboard.riwayat-penjualan.cetak', compact("hasil", "totalSemua", "totalBal", "totalBobot"))
         ->setOptions(['defaultFont' => 'sans-serif'])->setPaper('a4', 'landscape');
 
         return $pdf->stream('riwayat-penjualan.pdf');
