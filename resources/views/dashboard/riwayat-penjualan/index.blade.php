@@ -50,11 +50,11 @@
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $item->jumlah_bal }}</td>
                         @php
-                            $totalBobot = Illuminate\Support\Facades\DB::table("laku_detail")
+                            $pertotalBobot = Illuminate\Support\Facades\DB::table("laku_detail")
                             ->where("hasil_penjualan_id", $item->id)->sum("jumlah");
                         @endphp
                         
-                        <td>{{ $totalBbt }}</td>
+                        <td>{{ $pertotalBobot }}</td>
                         <td>{{ $item->pembayaran }}</td>
                         <td>Rp. {{ $item->total }}</td>
                         <td>
