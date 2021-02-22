@@ -65,10 +65,12 @@
                   </tbody>
                   <tfoot>
                     <tr>
-                        <th colspan="1">Rp. {{ $totalSemua }}</th>
+                        <th colspan="1"></th>
                         <th colspan="1">{{ $totalBal }}</th>
                         <th colspan="1">{{ $totalBobot }}</th>
-                        <th colspan="2"></th>
+                        <th colspan="1"></th>
+                        <th colspan="1">Rp. {{ $totalSemua }}</th>
+                        <th colspan="1"></th>
                     </tr>
                 </tfoot>
                 
