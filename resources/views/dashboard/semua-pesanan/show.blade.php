@@ -62,7 +62,7 @@
         @else 
             <p class="text-success">Status : {{ $order->status }}</p>
         @endif
-        <p>total Kebutuhan : Rp. {{$order->total - 10000}} + Rp. 10000</p>
+        <p>total Kebutuhan : Rp. {{$order->total - 10000}} + ongkir : Rp. 10000</p>
         <p>Total : {{$order->total }}</p>
 
         @if (!empty($order->struk))
