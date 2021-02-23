@@ -57,14 +57,7 @@
                     </tr>
                     @endforeach
                   </tbody>
-                  <tfoot>
-                  <tr>
-                    <th>Nomor</th>
-                    <th>Nama</th>
-                    <th>Harga</th>
-                    <th>Aksi</th>
-                  </tr>
-                  </tfoot>
+                  
                 </table>
               </div>
               <!-- /.card-body -->

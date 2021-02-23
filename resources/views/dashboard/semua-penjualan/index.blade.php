@@ -63,9 +63,12 @@
                         <td>
                             <a href="{{ url("/semua-penjualan/$item->id") }}" class="btn btn-sm btn-info">Detail</a>
 
-                            @if ($item->status_pembayaran == "belum lunas")
-                              <a href="{{ url("/semua-penjualan/$item->id/konfirmasi") }}" class="btn btn-sm btn-success">Konfirmasi</a>    
+                            @if (Auth::user()->role == 3)
+                              @if ($item->status_pembayaran == "belum lunas")
+                                <a href="{{ url("/semua-penjualan/$item->id/konfirmasi") }}" class="btn btn-sm btn-success">Konfirmasi</a>    
+                              @endif                                
                             @endif
+
 
                         </td>
                     </tr>
