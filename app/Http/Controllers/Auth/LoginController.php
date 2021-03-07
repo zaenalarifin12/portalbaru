@@ -5,19 +5,13 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Auth;
+use Illuminate\Http\Request;
+use App\User;
+use Illuminate\Support\Facades\DB;
 
 class LoginController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Login Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles authenticating users for the application and
-    | redirecting them to your home screen. The controller uses a trait
-    | to conveniently provide its functionality to your applications.
-    |
-    */
 
     use AuthenticatesUsers;
 
@@ -45,6 +39,37 @@ class LoginController extends Controller
      */
     public function username()
     {
-        return 'no_hp';
+        return 'username';
+    }
+
+    public function loginAdmin()
+    {
+        return view("auth.loginAdmin");
+    }
+
+    public function storeLoginAdmin(Request $request)
+    {
+        $username   = $request->only('username');
+        $password   = $request->only('password');
+
+        $user = DB::table("user")->where('username','=',$username)
+                ->where(function($query) {
+                    $query->where('role', 2)
+                          ->orWhere('role', 3)
+                          ->orWhere('role', 4)
+                          ->orWhere('role', 5);
+                })->first();
+
+            
+        if ($user != null) {
+            $x = Auth::loginUsingId($user->id);
+            return redirect("/");
+        }else{
+            return redirect()->back()->with("msg", "username atau password ada yang salah");
+        }
+        
+
+
+        
     }
 }

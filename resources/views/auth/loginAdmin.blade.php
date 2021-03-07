@@ -26,7 +26,7 @@
   <!-- /.login-logo -->
   <div class="card">
     <div class="card-body login-card-body">
-      <p class="login-box-msg">Login Petani</p>
+      <p class="login-box-msg">Login Admin</p>
 
       <form action="{{ url("/login-admin") }}" method="post">
         <div class=" mb-3">
@@ -48,10 +48,6 @@
           <!-- /.col -->
         </div>
       </form>
-
-      <p class="mb-0">
-        <a href="{{ url("/register") }}" class="text-center">Daftar</a>
-      </p>
     </div>
     <!-- /.login-card-body -->
   </div>

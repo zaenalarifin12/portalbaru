@@ -77,4 +77,9 @@ Route::group(["middleware" => ["auth"]], function(){
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/login-admin', 'Auth\LoginController@loginAdmin');
+Route::post('/login-admin', 'Auth\LoginController@storeLoginAdmin');
+
+Route::get('/home', function(){
+    return redirect("/");
+})->name('home');

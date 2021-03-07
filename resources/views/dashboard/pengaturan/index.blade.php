@@ -33,73 +33,119 @@
                         <div class="input-group-append">
                         </div>
                     </div>
-                    <label for="">Nomor HP</label><br>
+                    <label for="">username</label><br>
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" disabled value="{{ $user->no_hp }}" name="no_hp" required placeholder="no_hp">
+                        <input type="text" class="form-control" disabled value="{{ $user->username }}" name="username" required placeholder="username">
                         <div class="input-group-append">
                         </div>
                     </div>
-                    <label for="">Nomor Induk Kependudukan</label><br>
+
+                    @if (Auth::user()->role == 2)
+                      <label for="">Jabatan</label><br>
+                      <div class="input-group mb-3">
+                          <input type="text" class="form-control" disabled value="Admin PPL">
+                          <div class="input-group-append">
+                          </div>
+                      </div>
+                    @endif
+                    @if (Auth::user()->role == 3)
+                      <label for="">Jabatan</label><br>
+                      <div class="input-group mb-3">
+                        <input type="text" class="form-control" disabled value="Admin Penjualan">
+                          <div class="input-group-append">
+                          </div>
+                      </div>
+                    @endif
+                    @if (Auth::user()->role == 4)
+                      <label for="">Jabatan</label><br>
+                      <div class="input-group mb-3">
+                        <input type="text" class="form-control" disabled value="Admin Keuangan">
+                          <div class="input-group-append">
+                          </div>
+                      </div>
+                    @endif
+
+
+                    @if (Auth::user()->role == 5)
+                    <label for="">Jabatan</label><br>
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" disabled value="{{ $user->nik }}" name="nik" required placeholder="nik">
+                      <input type="text" class="form-control" disabled value="Super Admin">
                         <div class="input-group-append">
                         </div>
                     </div>
-                    <label for="">Alamat</label><br>
-                    <div class="input-group mb-3">
-                        <input type="text" class="form-control" disabled value="{{ $user->alamat }}" name="alamat" required placeholder="alamat">
-                        <div class="input-group-append">
+                    @endif
+
+                    @if (
+                    Auth::user()->role == 1
+                    )
+                      <label for="">Nomor HP</label><br>
+                      <div class="input-group mb-3">
+                          <input type="text" class="form-control" disabled value="{{ $user->no_hp }}" name="no_hp" required placeholder="no_hp">
+                          <div class="input-group-append">
+                          </div>
+                      </div>
+                        <label for="">Nomor Induk Kependudukan</label><br>
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" disabled value="{{ $user->nik }}" name="nik" required placeholder="nik">
+                            <div class="input-group-append">
+                            </div>
                         </div>
-                    </div>
-                    <label for="">RT</label><br>
-                    <div class="input-group mb-3">
-                        <input type="text" class="form-control" disabled value="{{ $user->rt }}" name="rt" required placeholder="rt">
-                        <div class="input-group-append">
+    
+                        <label for="">Alamat</label><br>
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" disabled value="{{ $user->alamat }}" name="alamat" required placeholder="alamat">
+                            <div class="input-group-append">
+                            </div>
                         </div>
-                    </div>
-                    <label for="">RW</label><br>
-                    <div class="input-group mb-3">
-                        <input type="text" class="form-control" disabled value="{{ $user->rw }}" name="rw" required placeholder="rw">
-                        <div class="input-group-append">
+                        <label for="">RT</label><br>
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" disabled value="{{ $user->rt }}" name="rt" required placeholder="rt">
+                            <div class="input-group-append">
+                            </div>
                         </div>
-                    </div>
-                    <label for="">Kecamatan</label><br>
-                    <div class="input-group mb-3">
-                        <input type="text" class="form-control" disabled value="{{ $user->kecamatan }}" name="kecamatan" required placeholder="kecamatan">
-                        <div class="input-group-append">
+                        <label for="">RW</label><br>
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" disabled value="{{ $user->rw }}" name="rw" required placeholder="rw">
+                            <div class="input-group-append">
+                            </div>
                         </div>
-                    </div>
-                    <label for="">Kabupaten</label><br>
-                    <div class="input-group mb-3">
-                        <input type="text" class="form-control" disabled value="{{ $user->kabupaten }}" name="kabupaten" required placeholder="kabupaten">
-                        <div class="input-group-append">
+                        <label for="">Kecamatan</label><br>
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" disabled value="{{ $user->kecamatan }}" name="kecamatan" required placeholder="kecamatan">
+                            <div class="input-group-append">
+                            </div>
                         </div>
-                    </div>
-                    <label for="">Nama Ketua Kelompok</label><br>
-                    <div class="input-group mb-3">
-                        <input type="text" class="form-control" disabled value="{{ $user->nama_ketua_kelompok }}" name="nama_ketua_kelompok" required placeholder="nama ketua kelompok">
-                        <div class="input-group-append">
+                        <label for="">Kabupaten</label><br>
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" disabled value="{{ $user->kabupaten }}" name="kabupaten" required placeholder="kabupaten">
+                            <div class="input-group-append">
+                            </div>
                         </div>
-                    </div>
-                    <label for="">Tahun Tanam</label><br>
-                    <div class="input-group mb-3">
-                        <input type="text" class="form-control" disabled value="{{ $user->tahun_tanam }}" name="tahun_tanam" required placeholder="tahun tanam">
-                        <div class="input-group-append">
+                        <label for="">Nama Ketua Kelompok</label><br>
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" disabled value="{{ $user->nama_ketua_kelompok }}" name="nama_ketua_kelompok" required placeholder="nama ketua kelompok">
+                            <div class="input-group-append">
+                            </div>
                         </div>
-                    </div>
-                    <label for="">Jumlah Paket</label><br>
-                    <div class="input-group mb-3">
-                        <input type="text" class="form-control" disabled value="{{ $user->jumlah_paket }}" name="jumlah_paket" required placeholder="jumlah paket">
-                        <div class="input-group-append">
+                        <label for="">Tahun Tanam</label><br>
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" disabled value="{{ $user->tahun_tanam }}" name="tahun_tanam" required placeholder="tahun tanam">
+                            <div class="input-group-append">
+                            </div>
                         </div>
-                    </div>
-                    <label for="">Nomor Rekening</label><br>
-                    <div class="input-group mb-3">
-                        <input type="text" class="form-control" disabled value="{{ $user->nomor_rekening }}" name="nomor_rekening" required placeholder="nomor rekening">
-                        <div class="input-group-append">
+                        <label for="">Jumlah Paket</label><br>
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" disabled value="{{ $user->jumlah_paket }}" name="jumlah_paket" required placeholder="jumlah paket">
+                            <div class="input-group-append">
+                            </div>
                         </div>
-                    </div>
-            
+                        <label for="">Nomor Rekening</label><br>
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" disabled value="{{ $user->nomor_rekening }}" name="nomor_rekening" required placeholder="nomor rekening">
+                            <div class="input-group-append">
+                            </div>
+                        </div>
+                    @endif
                     <div class="row">
                       <div class="col-8">
                     

@@ -30,14 +30,15 @@ class PengaturanController extends Controller
     public function update(Request $request)
     {
         $id = Auth::user()->id;
-
+        
         $user = User::findOrFail($id);
 
         if(empty($request->password)){
             $user->update([
                 'nama'                  => $request->nama,
                 'nik'                   => $request->nik,
-                'role'                  => $request->role,
+                'username'              => $request->username,
+                'role'                  => Auth::user()->role,
                 'no_hp'                 => $request->no_hp,
                 'alamat'                => $request->alamat,
                 'rt'                    => $request->rw,
@@ -52,8 +53,9 @@ class PengaturanController extends Controller
             $user->update([
                 'nama'                  => $request->nama,
                 'nik'                   => $request->nik,
+                'username'              => $request->username,
                 'password'              => Hash::make($request->password),
-                'role'                  => $request->role,
+                'role'                  => Auth::user()->role,
                 'no_hp'                 => $request->no_hp,
                 'alamat'                => $request->alamat,
                 'rt'                    => $request->rw,

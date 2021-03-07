@@ -66,6 +66,7 @@
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $item->nik }}</td>
                         <td>{{ $item->nama }}</td>
+                        <td>{{ $item->username }}</td>
                         <td>{{ $item->no_hp }}</td>
                         <td>{{ $item->alamat }}</td>
                         <td>{{ $item->rt }}</td>

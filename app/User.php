@@ -15,7 +15,7 @@ class User extends Authenticatable
     protected $guarded = [];
     
     protected $hidden = [
-        'password', 'remember_token',
+        'password'
     ];
 
     public function orderProduct()

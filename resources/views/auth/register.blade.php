@@ -19,7 +19,8 @@
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
 <body class="hold-transition login-page">
-<div class="login-box">
+  
+<div class="login-box " style="margin-top: 500px;">
   <div class="login-logo">
     <a href="#">Portal</a>
   </div>
@@ -47,10 +48,16 @@
           </div>
         </div>
         <div class="input-group mb-3">
+          <input type="text" class="form-control" name="username" required placeholder="username">
+          <div class="input-group-append">
+            <div class="input-group-text">
+            </div>
+          </div>
+        </div>
+        <div class="input-group mb-3">
             <input type="text" class="form-control" name="no_hp" required placeholder="no_hp">
             <div class="input-group-append">
               <div class="input-group-text">
-                
               </div>
             </div>
         </div>
