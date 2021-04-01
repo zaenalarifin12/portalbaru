@@ -228,11 +228,22 @@
             </li>
             @endif
 
+            
+            @if (
+              Auth::user()->role == 1
+            )
             <li class="nav-item">
               <a href="{{ url("/pengaturan") }}" class="nav-link">
                   <p>Pengaturan</p>
               </a>
             </li>
+            @else 
+            <li class="nav-item">
+              <a href="{{ url("/pengaturan/admin") }}" class="nav-link">
+                  <p>Pengaturan</p>
+              </a>
+            </li>
+            @endif
             
 
             <li class="nav-item mt-4">

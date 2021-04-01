@@ -11,9 +11,7 @@
 
         protected $guard = 'admin';
 
-        protected $fillable = [
-            'nama', 'username', 'role', "password"
-        ];
+        protected $guarded = [];
 
         public $timestamps = false;
 

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Auth;
 use App\User;
+use App\Admin;
 
 class PengaturanController extends Controller
 {
