@@ -78,7 +78,7 @@
 
                     @if (Auth::user()->role == 3 || Auth::user()->role == 5)
 
-                        @if ($order->status == 'belum')
+                        @if ($order->status == 'belum' || $order->status == 'salah')
                             <form action="{{ url("/semua-pesanan/$order->id/dikirim") }}" method="post">
                                 @method("PUT")
                                 @csrf
