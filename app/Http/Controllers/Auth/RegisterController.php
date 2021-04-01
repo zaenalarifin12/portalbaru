@@ -79,6 +79,7 @@ class RegisterController extends Controller
             'nama_ketua_kelompok'   => $data['nama_ketua_kelompok'],
             'tahun_tanam'           => $data['tahun_tanam'],
             'jumlah_paket'          => $data['jumlah_paket'],
+            'bank'        => $data['bank'],
             'nomor_rekening'        => $data['nomor_rekening'],
         ]);
     }
