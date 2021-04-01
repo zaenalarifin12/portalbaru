@@ -61,9 +61,12 @@
                         <p class="text-primary">Status : {{ $order->status }}</p>
                     @elseif ($order->status == "dikirim")
                         <p class="text-primary">Status : {{ $order->status }}</p>
+
                     @elseif ($order->status == "salah")
-                        <p class="text-primary">Status : Total Jumlah Harga tidak sesuai struk</p>
-                        <a href="{{ url("/pesanan-saya/$order->id") }}" class="btn btn-info">Upload ulang</a>
+                        @if (Auth::user()->role == 1)
+                            <p class="text-primary">Status : Total Jumlah Harga tidak sesuai struk</p>
+                            <a href="{{ url("/pesanan-saya/$order->id") }}" class="btn btn-info">Upload ulang</a>
+                        @endif
                     @else
                         <p class="text-success">Status : {{ $order->status }}</p>
                     @endif
