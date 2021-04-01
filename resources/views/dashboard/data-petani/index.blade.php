@@ -48,6 +48,7 @@
                     <th>Nomor</th>
                     <th>NIK</th>
                     <th>Nama</th>
+                    <th>username</th>
                     <th>NO HP</th>
                     <th>alamat</th>
                     <th>rt</th>
