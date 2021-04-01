@@ -86,7 +86,7 @@
                             </form>
                             <br>
 
-                            @if ($order->struck != null)
+                            @if ($order->struk != null)
                                 <form action="{{ url("/semua-pesanan/$order->id/salah") }}" method="post">
                                     @method("PUT")
                                     @csrf
