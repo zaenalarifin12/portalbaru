@@ -15,6 +15,9 @@
             'nama', 'username', 'role', "password"
         ];
 
+        public $timestamps = false;
+
+
         public function scopeIsPetani($query)
     {
         return $this->query("role", 1);
