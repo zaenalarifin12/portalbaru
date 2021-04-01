@@ -12,7 +12,7 @@ class UserController extends Controller
     public function index()
     {
         // user yang ga admin
-        $users = User::where("role", "!=", 1)
+        $users = Admin::where("role", "!=", 1)
                         ->where("role", "!=", 5)
                         ->get();
 
