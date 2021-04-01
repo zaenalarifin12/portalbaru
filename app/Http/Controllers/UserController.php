@@ -25,7 +25,7 @@ class UserController extends Controller
 
     public function store(Request $request)
     {
-        User::create([
+        Admin::create([
             "nama"         => $request->nama ,
             "no_hp"        => $request->no_hp,
             "password"     => Hash::make($request->password),
@@ -37,14 +37,14 @@ class UserController extends Controller
 
     public function edit($id)
     {
-        $user = User::findOrFail($id);
+        $user = Admin::findOrFail($id);
 
         return view("dashboard.user.edit", compact("user"));
     }
 
     public function update(Request $request, $id)
     {
-        $user = User::findOrFail($id);
+        $user = Admin::findOrFail($id);
 
         if($request->password == null){
             $user->update([
@@ -64,7 +64,7 @@ class UserController extends Controller
 
     public function destroy($id)
     {
-        $user = User::findOrFail($id);
+        $user = Admin::findOrFail($id);
         $user->delete();
         
         return redirect("/user")->with("msg", "admin berhasil dihapus");

@@ -30,6 +30,8 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+        // $this->middleware('guest:admin')->except('logout');
+
     }
 
      /**
@@ -52,7 +54,7 @@ class LoginController extends Controller
         $username   = $request->only('username');
         $password   = $request->only('password');
 
-        $user = DB::table("user")->where('username','=',$username)
+        $user = DB::table("admin")->where('username','=',$username)
                 ->where(function($query) {
                     $query->where('role', 2)
                           ->orWhere('role', 3)
@@ -60,12 +62,14 @@ class LoginController extends Controller
                           ->orWhere('role', 5);
                 })->first();
 
-            
+                
         if ($user != null) {
-            $x = Auth::loginUsingId($user->id);
+            // $x = Auth::loginUsingId($user->id);
+            Auth::guard("admin")->loginUsingId($user->id);
+            
             return redirect("/");
         }else{
-            return redirect()->back()->with("msg", "username atau password ada yang salah");
+            return redirect("/login-admin")->with("msg", "username atau password ada yang salah");
         }
         
 

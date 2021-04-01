@@ -63,6 +63,7 @@
         </div>
         <div class="info">
           <a href="#" class="d-block">
+            
             {{ Auth::user()->nama }}
             -
             @if (Auth::user()->role == 1)

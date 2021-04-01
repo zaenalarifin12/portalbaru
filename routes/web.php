@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::group(["middleware" => ["auth"]], function(){
+Route::group(["middleware" => ["auth:web,admin"]], function(){
     Route::get('/',                 "DashboardController@index" );
     Route::get('/informasi-latest', "DashboardController@informasi" );    
     
