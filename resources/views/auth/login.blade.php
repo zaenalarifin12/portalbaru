@@ -28,7 +28,7 @@
     <div class="card-body login-card-body">
       <p class="login-box-msg">Login Petani</p>
 
-      <form action="{{ url("/login-admin") }}" method="post">
+      <form action="{{ url("/login") }}" method="post">
         <div class=" mb-3">
           <input type="text" class="form-control" name="username" placeholder="username">
         </div>
