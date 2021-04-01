@@ -67,4 +67,15 @@ class SemuaPesananController extends Controller
 
         return redirect("/semua-pesanan/$order->id")->with("msg", "pesanan berhasil dikirim");
     }
+
+    public function salah($id)
+    {
+        $order = OrderProduct::findOrFail($id);
+        
+        $order->update([
+            "status" => "salah"
+        ]);
+
+        return redirect("/semua-pesanan/$order->id")->with("msg", "struk salah");
+    }
 }

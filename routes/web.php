@@ -32,6 +32,7 @@ Route::group(["middleware" => ["auth"]], function(){
     Route::get('/semua-pesanan/{id}',                   "SemuaPesananController@show");
     Route::put('/semua-pesanan/{id}',                   "SemuaPesananController@update");
     Route::put('/semua-pesanan/{id}/dikirim',           "SemuaPesananController@dikirim");
+    Route::put('/semua-pesanan/{id}/salah',           "SemuaPesananController@salah");
     
 
     Route::get('/daftar-penjualan',                     "DaftarPenjualanController@index");
