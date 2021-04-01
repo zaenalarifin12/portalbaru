@@ -32,7 +32,7 @@
                 
                 <div class="form-group">
                   <label for="">Username</label>
-                  <input type="number" value="{{ $user->username }}" required class="form-control" name="username" placeholder="username">
+                  <input type="text" value="{{ $user->username }}" required class="form-control" name="username" placeholder="username">
                 </div>
                 <div class="form-group">
                     <label for="">Password (jika ingin mengganti)</label>

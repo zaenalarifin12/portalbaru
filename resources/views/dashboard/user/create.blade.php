@@ -31,7 +31,7 @@
                 </div>
                 <div class="form-group">
                   <label for="">username</label>
-                  <input type="number" value="" class="form-control" name="username" placeholder="username">
+                  <input type="text" value="" class="form-control" name="username" placeholder="username">
               </div>
                 <div class="form-group">
                     <label for="">Password</label>
