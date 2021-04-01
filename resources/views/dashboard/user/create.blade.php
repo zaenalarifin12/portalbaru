@@ -30,8 +30,8 @@
                     <input type="text" value="" class="form-control" name="nama" placeholder="Nama">
                 </div>
                 <div class="form-group">
-                  <label for="">no hp</label>
-                  <input type="number" value="" class="form-control" name="no_hp" placeholder="Nomor hp">
+                  <label for="">username</label>
+                  <input type="number" value="" class="form-control" name="username" placeholder="username">
               </div>
                 <div class="form-group">
                     <label for="">Password</label>

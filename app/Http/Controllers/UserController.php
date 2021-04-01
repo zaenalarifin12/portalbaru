@@ -28,7 +28,7 @@ class UserController extends Controller
     {
         Admin::create([
             "nama"         => $request->nama ,
-            "no_hp"        => $request->no_hp,
+            "username"        => $request->username,
             "password"     => Hash::make($request->password),
             "role"         => $request->role
         ]);
@@ -50,12 +50,12 @@ class UserController extends Controller
         if($request->password == null){
             $user->update([
                 "nama"         => $request->nama ,
-                "no_hp"        => $request->no_hp,
+                "username"        => $request->username,
             ]);
         }else{
             $user->update([
                 "nama"         => $request->nama ,
-                "no_hp"        => $request->no_hp,
+                "username"        => $request->username,
                 "password"     => Hash::make($request->password),
             ]);    
         }

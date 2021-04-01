@@ -31,8 +31,8 @@
                 </div>
                 
                 <div class="form-group">
-                  <label for="">NO hp</label>
-                  <input type="number" value="{{ $user->no_hp }}" required class="form-control" name="no_hp" placeholder="NIK">
+                  <label for="">Username</label>
+                  <input type="number" value="{{ $user->username }}" required class="form-control" name="username" placeholder="username">
                 </div>
                 <div class="form-group">
                     <label for="">Password (jika ingin mengganti)</label>

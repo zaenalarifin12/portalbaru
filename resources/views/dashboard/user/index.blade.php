@@ -35,7 +35,7 @@
                   <tr>
                     <th>Nomor</th>
                     <th>Nama</th>
-                    <th>no hp</th>
+                    <th>username</th>
                     <th>Jabatan</th>
                     <th>Aksi</th>
                   </tr>
@@ -45,7 +45,7 @@
                     <tr>
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $item->nama }}</td>
-                        <td>{{ $item->no_hp }}</td>
+                        <td>{{ $item->username }}</td>
                         <td>
                           @if ($item->role == 1)
                             Petani
