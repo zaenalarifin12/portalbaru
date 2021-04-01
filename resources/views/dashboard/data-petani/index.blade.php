@@ -57,6 +57,7 @@
                     <th>nama ketua kelompok</th>
                     <th>tahun tanam</th>
                     <th>jumlah paket</th>
+                    <th>bank</th>
                     <th>nomor rekening</th>
                   </tr>
                   </thead>
@@ -76,6 +77,7 @@
                         <td>{{ $item->nama_ketua_kelompok }}</td>
                         <td>{{ $item->tahun_tanam }}</td>
                         <td>{{ $item->jumlah_paket }}</td>
+                        <td>{{ $item->bank }}</td>
                         <td>{{ $item->nomor_rekening }}</td>
                     </tr>
                     @endforeach

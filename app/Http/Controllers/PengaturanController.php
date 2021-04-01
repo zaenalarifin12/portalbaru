@@ -47,6 +47,7 @@ class PengaturanController extends Controller
                 'nama_ketua_kelompok'   => $request->nama_ketua_kelompok,
                 'tahun_tanam'           => $request->tahun_tanam,
                 'jumlah_paket'          => $request->jumlah_paket,
+                'bank'        => $request->bank,
                 'nomor_rekening'        => $request->nomor_rekening,
             ]);
         }else{
@@ -64,6 +65,7 @@ class PengaturanController extends Controller
                 'nama_ketua_kelompok'   => $request->nama_ketua_kelompok,
                 'tahun_tanam'           => $request->tahun_tanam,
                 'jumlah_paket'          => $request->jumlah_paket,
+                'bank'                  => $request->bank,
                 'nomor_rekening'        => $request->nomor_rekening,
             ]);
         }

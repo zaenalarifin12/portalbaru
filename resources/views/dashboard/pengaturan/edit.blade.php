@@ -150,6 +150,17 @@
                             <div class="input-group-append">
                             </div>
                         </div>
+                        
+                        
+                        <label for="">Nama Bank</label><br>
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" value="{{ $user->bank }}" name="bank" required placeholder="bank">
+                            <div class="input-group-append">
+                            </div>
+                        </div>
+
+                        
+
                         <label for="">Nomor Rekening</label><br>
                         <div class="input-group mb-3">
                             <input type="text" class="form-control" value="{{ $user->nomor_rekening }}" name="nomor_rekening" required placeholder="nomor rekening">
