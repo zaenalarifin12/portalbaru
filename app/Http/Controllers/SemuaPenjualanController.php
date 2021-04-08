@@ -75,6 +75,7 @@ class SemuaPenjualanController extends Controller
                     ->select(
                         "user.nama",
                         "user.nomor_rekening",
+                        "user.bank",
                         "hasil_penjualan.id",
                         "daftar_penjualan.pembayaran"
                         )
