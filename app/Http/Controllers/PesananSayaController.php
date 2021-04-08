@@ -32,12 +32,23 @@ class PesananSayaController extends Controller
         return view("dashboard.pesanan-saya.index", compact(["cart", "cartDetail"]));
     }
 
+    public function destroy($id)
+    {
+        DB::table("cart_detail")
+        ->where("cart_id", "=", $id)
+        ->delete();
+
+        return redirect()->back();
+    }
+
+
     public function edit($id)
     {
         $orderProduct = OrderProduct::findOrFail($id);
 
         return view("dashboard.pesanan-saya.edit", compact("orderProduct"));
     }
+
 
     public function update(Request $request, $id)
     {

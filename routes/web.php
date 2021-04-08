@@ -22,6 +22,7 @@ Route::group(["middleware" => ["auth:web,admin"]], function(){
     Route::post('/pemesanan-kebutuhan/{id}/cart',       "PemesananKebutuhanController@cart");
 
     Route::get('/pesanan-saya',                         "PesananSayaController@index");
+    Route::delete('/pesanan-saya/{id}',                    "PesananSayaController@destroy");
     Route::get('/pesanan-saya/{id}',                    "PesananSayaController@edit");
     Route::put('/pesanan-struck/{id}',                  "PesananSayaController@update");
     Route::get('/pesanan-saya-sukses/{id}',             "PesananSayaController@sukses");

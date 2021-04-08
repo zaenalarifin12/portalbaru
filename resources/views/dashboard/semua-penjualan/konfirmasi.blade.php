@@ -19,7 +19,8 @@
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
-        <p>Nomor Rekening Petani : <b>{{ $hasil->nomor_rekening }} ({{ $hasil->nama }})</b> </p>
+        
+        <p>Nomor Rekening Petani : <b>{{ $hasil->nomor_rekening }} - {{$hasil->bank ?? "BANK TIDAK ADA"}} - Atas Nama ({{ $hasil->nama }})</b> </p>
 
         <p>Laku</p>
 
