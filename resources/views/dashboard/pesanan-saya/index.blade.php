@@ -31,9 +31,9 @@
                             @forelse ($cartDetail as $item)
 
                                 <div class="col-md-4">
-                                    <!-- Widget: user widget style 1 -->
+                                    
                                     <div class="card card-widget widget-user">
-                                        <!-- Add the bg color to the header using any of the bg-* classes -->
+                                        
                                         <div class="widget-user-header bg-info" style="height: 55px">
                                             <h3 class="widget-user-username">{{ $item->nama }}</h3>
                                         </div>
@@ -51,14 +51,6 @@
                                                     <input type="hidden" name="id[]" value="{{ $item->id }}">
                                                     <input type="number" class="form-control" name="jumlah[]"
                                                         value="{{ $item->jumlah }}">
-                                                </div>
-                                                <div>
-                                                    <form action={{ url("/pesanan-saya/$item->id") }} method="post">
-                                                        @csrf
-                                                        @method("DELETE")
-                                                        <button class="btn btn-danger">Hapus</button>
-
-                                                    </form>
                                                 </div>
                                             </div>
                                             <!-- /.row -->
