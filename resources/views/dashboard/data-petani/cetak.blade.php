@@ -19,7 +19,7 @@
 </head>
 <body>
 
-    <h3>Daftar Petani keuangan PT sarana arifnusa tahun 2021</h3>
+    <h3><center>Daftar Petani keuangan PT sarana arifnusa tahun 2021</center></h3>
 
     <table style="">
         <thead>

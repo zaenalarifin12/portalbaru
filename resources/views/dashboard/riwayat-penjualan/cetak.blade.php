@@ -20,7 +20,7 @@
 </head>
 <body>
     
-    <h1>Riwayat Penjualan keuangan PT sarana arifnusa tahun 2021</h1>
+    <h1><center> Penjualan keuangan PT sarana arifnusa tahun 2021</center></h1>
     
           <div class="col-12">
             <div class="card">

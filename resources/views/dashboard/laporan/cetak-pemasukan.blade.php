@@ -18,7 +18,7 @@
 </head>
 <body>
   
-    <h1>Laporan Pemasukan keuangan PT sarana arifnusa tahun 2021</h1>
+    <h1><center>Laporan Pemasukan keuangan PT sarana arifnusa tahun 2021</center></h1>
   <table id="example1" class="table table-bordered table-striped">
         <thead>
         <tr>
