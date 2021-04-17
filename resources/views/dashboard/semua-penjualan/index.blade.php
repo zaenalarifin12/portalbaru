@@ -16,14 +16,6 @@
             <h1>Hasil Penjualan</h1>
           </div>
 
-          @if (
-            Auth::user()->role == 4 ||
-            Auth::user()->role == 5
-          )
-          <div class="col-sm-5 ">
-            <a href="{{ url("/user/create") }}" class="btn btn-primary btn-sm float-right">Buat</a>
-          </div>              
-          @endif
 
         </div>
       </div>
