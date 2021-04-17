@@ -33,9 +33,9 @@ class GantiPasswordAdminController extends Controller
             $user->update([
                 'password'  => $request->new_password,
             ]);
-            return redirect("/ganti-password/admin")->with("msg","password anda berhasil diperbarui");
+            return redirect("/ganti-password-admin")->with("msg","password anda berhasil diperbarui");
         }else{
-            return redirect("/ganti-password/admin")->with("msg","password anda salah ");
+            return redirect("/ganti-password-admin")->with("msg","password anda salah ");
         }
         
     }
