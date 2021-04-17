@@ -38,12 +38,6 @@
                         <div class="input-group-append">
                         </div>
                     </div>
-                    <label for="">Password (jika ingin menganti silahkan diisi )</label><br>
-                    <div class="input-group mb-3">
-                        <input type="text" class="form-control" value="" name="password" placeholder="password (optional)">
-                        <div class="input-group-append">
-                        </div>
-                    </div>
                     <label for="">username</label><br>
                     <div class="input-group mb-3">
                         <input type="text" class="form-control" value="{{ $user->username }}" name="username" required placeholder="username">

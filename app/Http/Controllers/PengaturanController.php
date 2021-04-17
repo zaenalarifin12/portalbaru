@@ -34,42 +34,23 @@ class PengaturanController extends Controller
         
         $user = User::findOrFail($id);
 
-        if(empty($request->password)){
-            $user->update([
-                'nama'                  => $request->nama,
-                'nik'                   => $request->nik,
-                'username'              => $request->username,
-                'role'                  => Auth::user()->role,
-                'no_hp'                 => $request->no_hp,
-                'alamat'                => $request->alamat,
-                'rt'                    => $request->rw,
-                'rw'                    => $request->kecamatan,
-                'kabupaten'             => $request->kabupaten,
-                'nama_ketua_kelompok'   => $request->nama_ketua_kelompok,
-                'tahun_tanam'           => $request->tahun_tanam,
-                'jumlah_paket'          => $request->jumlah_paket,
-                'bank'        => $request->bank,
-                'nomor_rekening'        => $request->nomor_rekening,
-            ]);
-        }else{
-            $user->update([
-                'nama'                  => $request->nama,
-                'nik'                   => $request->nik,
-                'username'              => $request->username,
-                'password'              => Hash::make($request->password),
-                'role'                  => Auth::user()->role,
-                'no_hp'                 => $request->no_hp,
-                'alamat'                => $request->alamat,
-                'rt'                    => $request->rw,
-                'rw'                    => $request->kecamatan,
-                'kabupaten'             => $request->kabupaten,
-                'nama_ketua_kelompok'   => $request->nama_ketua_kelompok,
-                'tahun_tanam'           => $request->tahun_tanam,
-                'jumlah_paket'          => $request->jumlah_paket,
-                'bank'                  => $request->bank,
-                'nomor_rekening'        => $request->nomor_rekening,
-            ]);
-        }
+        
+        $user->update([
+            'nama'                  => $request->nama,
+            'nik'                   => $request->nik,
+            'username'              => $request->username,
+            'role'                  => Auth::user()->role,
+            'no_hp'                 => $request->no_hp,
+            'alamat'                => $request->alamat,
+            'rt'                    => $request->rw,
+            'rw'                    => $request->kecamatan,
+            'kabupaten'             => $request->kabupaten,
+            'nama_ketua_kelompok'   => $request->nama_ketua_kelompok,
+            'tahun_tanam'           => $request->tahun_tanam,
+            'jumlah_paket'          => $request->jumlah_paket,
+            'bank'        => $request->bank,
+            'nomor_rekening'        => $request->nomor_rekening,
+        ]);
 
         return redirect("/pengaturan")->with("profile anda berhasil diperbarui ");
     }

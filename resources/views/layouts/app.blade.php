@@ -237,6 +237,11 @@
                   <p>Pengaturan</p>
               </a>
             </li>
+            <li class="nav-item">
+              <a href="{{ url("/ganti-password") }}" class="nav-link">
+                  <p>Ganti Password</p>
+              </a>
+            </li>
             @else 
             <li class="nav-item">
               <a href="{{ url("/pengaturan/admin") }}" class="nav-link">
