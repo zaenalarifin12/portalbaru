@@ -31,7 +31,7 @@ class GantiPasswordController extends Controller
         if (Hash::check($request->old_password, $user->password))
         {
             $user->update([
-                'password'  => $request->new_password,
+                'password'  => Hash::make($request->new_password),
             ]);
             return redirect("/ganti-password")->with("msg","password anda berhasil diperbarui ");
         }else{
