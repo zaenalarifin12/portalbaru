@@ -79,13 +79,15 @@ Route::group(["middleware" => ["auth:web,admin"]], function(){
     Route::get("/ganti-password",                      "GantiPasswordController@edit");
     Route::put("/ganti-password",                       "GantiPasswordController@update");
 
+    
+    Route::get("/ganti-password-admin",                      "GantiPasswordAdminController@edit");
+    Route::put("/ganti-password-admin",                       "GantiPasswordAdminController@update");
+    
     Route::get("/pengaturan/admin",                           "PengaturanAdminController@index");
     Route::get("/pengaturan/admin/edit",                      "PengaturanAdminController@edit");
     Route::put("/pengaturan/admin",                           "PengaturanAdminController@update");
 
     
-    Route::get("/ganti-password-admin",                      "GantiPasswordAdminController@edit");
-    Route::put("/ganti-password-admin",                       "GantiPasswordAdminController@update");
 });
 
 Auth::routes();
